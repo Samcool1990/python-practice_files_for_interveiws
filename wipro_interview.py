@@ -1,21 +1,20 @@
 #ROMAN NAME
-def roman(n):
-    i = ["","I","II","III", "IV","V","VI","VII","VIII","IX"]
-    j = ["","X","XX","XXX","XL","L","LX","LXX","LXXX","XC"]
+def roman(num):
+    val = [1000,900,500,400,100,90,50,40,10,9,5,4,1]
+    syb = [ 'm','cm','d','cd','c','xc','l','xl','x','ix','v', 'iv','i'] 
 
-    ones = i[n%10]
-    tens = j[(n%100)//10]
-
-    roman_Word = tens + ones
-    return roman_Word
-
+    roman_name = ''
+    i = 0
+    while num > 0:
+        for _ in range(num //val[i] ):
+            roman_name += syb[i]
+            num -= val[i]
+        i += 1
+    return roman_name
 print(roman(90))
 
 
 def prime_number4(start,end):
-
-    
-    
     for i in range(start, end):
         for j in range(2,i//2+1):
             if i%j ==0:
