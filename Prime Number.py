@@ -33,6 +33,19 @@ def prime_number3(start, end):
             for i in range(2,(n//2+1)):
                 if n%i==0:
                     break
-            else:
-                print(n)
+                else:
+                    print(n)
 prime_number3(10,100)
+
+
+def prime_number4(start,end):
+    res = []
+    for i in range(start, end):
+        for j in range(2,i//2):
+            if i%j ==0:
+                break
+        else:
+            res.append(i)
+
+
+print(prime_number4(100,200))

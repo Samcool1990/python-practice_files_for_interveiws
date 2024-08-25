@@ -1,7 +1,12 @@
 # #########
 # from unicodedata import digit
 
-
+def factorial_recurssion(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial_recurssion(n-1)
+print(factorial_recurssion(5))
 def factorial(n):
     facto = 1
     for i in range(1,n+1):

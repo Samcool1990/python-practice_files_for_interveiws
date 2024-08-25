@@ -1,4 +1,5 @@
-SELECT SUM(ENGINEER.Count) as A FROM ENGINEER INNER JOIN DATA ON ENGINEER.ID = DATA.ID WHERE DATA.Type = 'FrontEnd';
+SELECT SUM(ENGINEER.Count) as A FROM ENGINEER INNER JOIN DATA 
+ON ENGINEER.ID = DATA.ID WHERE DATA.Type = 'FrontEnd';
 
 
 select CONCAT(s.Name, ',' ,j.Date) as Offers
@@ -198,7 +199,8 @@ SELECT city from table2
 
 ##################################################################################################################################################################################
 
-Q1. Write a query to fetch the EmpFname from the EmployeeInfo table in the upper case and use the ALIAS name as EmpName.
+Q1. Write a query to fetch the EmpFname from the EmployeeInfo table in the upper case and use 
+the ALIAS name as EmpName.
 
 SELECT upper(EmpFname) as EmpName from EmployeeInfo ;
 
@@ -413,7 +415,7 @@ Q6. Write a query to extract all the vowels present in your name.
 SELECT TRANSLATE('Narendra', 'a' || TRANSLATE('Narendra', 'xaeiou', 'x'), 'a') FROM DUAL;
 
 
-Q7. Write a query to extract the employees’ details who joined in the year 1981.
+Q7. Write a query to extract the employees details who joined in the year 1981.
 
 SELECT * FROM Table WHERE TO_CHAR(hire_date, YY) == 81;
 
@@ -437,7 +439,7 @@ FROM EMP E, EMP M
 WHERE E.MGR = M.EMPNO AND E.hiredate < M.hiredate
 
 
-Q11. Write a query to find out the employees who don’t have any subordinates (reportees) i.e. the employees who are not the managers.
+Q11. Write a query to find out the employees who dont have any subordinates (reportees) i.e. the employees who are not the managers.
 
 SELECT * FROM EMP WHERE EMPNO NOT IN (SELECT DISTINCT NVL(mgr,0)FROM EMP)
 

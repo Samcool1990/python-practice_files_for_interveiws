@@ -7,8 +7,8 @@ for i in range(n):
             list1[i], list1[j] = list1[j], list1[i]
 print(list1)
 
-print(sorted(list1))
-list1.sort()
+print('>>>',sorted(list1,reverse=True))
+list1.sort(reverse=True)
 new_lst = []
 for i in list1:
     new_lst.append(i)

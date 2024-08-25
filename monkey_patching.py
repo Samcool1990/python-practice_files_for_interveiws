@@ -14,4 +14,5 @@ A.func = B.monkey_func
 obj = A()
 #calling func whose address got replaced with monkey_func
 obj.func()
+# obj.monkey_func()
 

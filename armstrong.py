@@ -15,8 +15,7 @@ print(armstrong(10))
 
 #Using For Loop
 def armstrong2(start,end):
-    for n in range(start,end):
-        
+    for n in range(start,end):        
         sum = 0
         temp=n
         while temp>0:

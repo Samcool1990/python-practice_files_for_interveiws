@@ -36,3 +36,18 @@ if n<=0:
 else:
     for i in range(n):
         print(fibonacci3(i))
+
+
+def fibonacci_range(start, end):
+    fib_sequence = []
+    a, b = 0, 1
+    while b <= end:
+        if b >= start:
+            fib_sequence.append(b)
+        a, b = b, a + b
+    return fib_sequence
+
+start = int(input("Enter the start value: "))
+end = int(input("Enter the end value: "))
+fib_range = fibonacci_range(start, end)
+print("Fibonacci numbers in the range:", fib_range)

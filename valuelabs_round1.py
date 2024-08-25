@@ -1,6 +1,6 @@
 l1 = ['a','b','c']
 l2 = [1,2,3]
-#outpu = {'a':3, 'b': 2, 'c':1}
+#output = {'a':3, 'b': 2, 'c':1}
 ch = {}
 l2.sort(reverse=True)
 n = len(l1)
@@ -14,15 +14,15 @@ l1 = ['a', 'b', 'c']
 l2 = [1, 2, 3]
 
 output = {key: value for key, value in zip(l1, reversed(l2))}
-print(output)
+print('output',output)
 
-list = [5,3,2,1,4]
-n = len(list)
+list1 = [5,3,2,1,4]
+n = len(list1)
 for i in range(n):
     for j in range(i+1,n):
-        if list[i] > list[j]:
-            list[j],list[i] = list[i], list[j]
-print(list)
+        if list1[i] > list1[j]:
+            list1[j],list1[i] = list1[i], list1[j]
+print(list1)
 
 
 ##decorators#######################
@@ -32,10 +32,12 @@ def decorator(func):
         result = func(x, y)
         print("After function execution")
         return result
+    print(">>>")
     return wrapper
 
 @decorator
 def add(x, y):
+    print("<<<<<<<")
     return x + y
 
 @decorator
@@ -73,4 +75,21 @@ d.method()
 #GIL
 ##Multithreading & multiprocessing
 #Iterator & generator in Python with example
+####Generators#########
+def func(n):
+    for i in range(1,n+1):
+        yield i*i
+    
+obj = func(3)
+print(next(obj))
+print(next(obj))
+print(next(obj))
+
+
+###iterators#####
+
+list1 = iter([1,6,9,4,5,3])
+print(f"1iter==> {next(list1)}")
+print(f"2iter==> {next(list1)}")
+print(f"3iter==> {next(list1)}")
 #all the geneerators are iterators. But, all iterators are not generators

@@ -4,7 +4,7 @@ def string_format(s):
     temp =s.split(' ')
     for i in temp:
         l.append(i[0].lower()+i[1:].upper())
-    s = '.'.join(l)
+    s = ' '.join(l)
     print(s)
     
 s="This is a string"

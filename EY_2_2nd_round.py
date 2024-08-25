@@ -1,4 +1,11 @@
-###Multiprocessing#################################################
+# Fastapi Pydantic 
+# loggers using yml
+# multiporcessing
+# multithreading
+# patching on runtime: while testing your request an url & you get the response after getting the response you do patching on run time
+
+
+# multiporcessing
 import multiprocessing
 import time
 
@@ -38,7 +45,8 @@ if __name__ == "__main__":
     custom_multiprocessor(num_processes=4, range_end=10_000_000)
 
 
-###Multithreading###################################################
+
+# multithreading
 import threading
 import time
 import requests
@@ -83,3 +91,19 @@ if __name__ == "__main__":
         "https://www.stackoverflow.com"
     ]
     custom_multithreader(urls, num_threads=3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

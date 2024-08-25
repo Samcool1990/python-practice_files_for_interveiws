@@ -9,7 +9,7 @@ def least_charecter_occurance(s):
     print("result1",ch)
     result = min(ch, key=ch.get)
     print("result2",result)
-    return ch
+    return result
 print("result3",least_charecter_occurance('asdasfsdgfhfghfghgddd'))    
     
 #Using Counter
@@ -35,7 +35,7 @@ def count_charecter_occurance2(s, search_char):
     except:
         print(0)
         
-print(count_charecter_occurance2('asdasfsdgfhfghfghgddd', 'd'))    
+count_charecter_occurance2('asdasfsdgfhfghfghgddd', 'a')
 
 
 #Count all the elements
