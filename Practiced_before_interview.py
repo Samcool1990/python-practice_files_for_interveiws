@@ -6,17 +6,11 @@ def roman(number):
     while number > 0:
         for j in range(number // val[i]):
             roman_name += syb[i]
-            number -= val[i]
-        
-        
+            number -= val[i]        
         i+= 1
-    
-    
-    return roman_name
-    
+    return roman_name   
 
 print(roman(90))
-
 
 
 def longest_palindrome(string):
