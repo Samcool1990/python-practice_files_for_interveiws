@@ -1,1 +1,2 @@
 ERROR: Negative amount not allowed: Transaction ID 12345 with amount $-100.50
+ERROR: Negative amount not allowed: Transaction ID 12345 with amount $-100.50
