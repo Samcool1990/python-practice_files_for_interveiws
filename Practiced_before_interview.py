@@ -6,12 +6,8 @@ def roman(number):
     while number > 0:
         for j in range(number // val[i]):
             roman_name += syb[i]
-            number -= val[i]
-        
-        
-        i+= 1
-    
-    
+            number -= val[i]       
+        i+= 1    
     return roman_name
     
 
@@ -72,9 +68,7 @@ def count_vowel_strings_in_ranges(words, queries):
     results = []
     for l,r in queries:
         result = prefix_vowel_count[r+1] - prefix_vowel_count[l]
-        results.append(result)
-    
-    
+        results.append(result) 
     
     return results
 
@@ -85,7 +79,7 @@ print(count_vowel_strings_in_ranges(words, queries))  # Output: [2, 2, 2]
 
 
 
-import multiprocess
+import multiprocessing
 import time
 
 def worker_sum_squares(start, end):
@@ -94,13 +88,13 @@ def worker_sum_squares(start, end):
     
 def multiprocess_func(num_process = 4, range_end = 1000000):
     range_per_process = range_end // num_process
-    pool = multiprocess.Pool(process = num_process)
+    pool = multiprocessing.Pool(processes= num_process)
     
     tasks = [(i * range_per_process, (i+1) * range_per_process) for i in range(num_process)]
     
     start_time = time.time()
     
-    result = pool.startmap(worker_sum_squares, tasks)
+    result = pool.starmap(worker_sum_squares, tasks)
     
     total_sum = sum(result)
     
@@ -136,6 +130,7 @@ def number_to_words2(n):
             return tens(n//10) + (one_to_nineteen(n%10) if n % 10 != 0 else "")
         elif n < 1000:
             return one_to_nineteen(n // 100) + ( num_to_words_helper(n % 100) if n % 100 != 0 else "")
+        
     
     return num_to_words_helper(n) + " only."
 numbers = 999
@@ -215,3 +210,124 @@ print(are_parentheses_balanced("([{}])"))
 print(are_parentheses_balanced("([)]"))
 print(are_parentheses_balanced("{{{{))))((()))}}}}"))  
     
+list4 = [
+    {'name': 'suman', 'location': 'kolkata'},
+    {'name': 'pathak', 'location': 'pune'},
+    {'name': 'sam', 'location': 'kolkata'},
+]
+
+def group_by_location(lst):
+    grouped = {}  # This will hold the final grouped data
+    
+    for item in lst:
+        location = item['location']  # Extract the location
+        if location not in grouped:  # If the location is not yet a key in grouped
+            grouped[location] = [item]  # Create a new list with the current item
+        else:
+            grouped[location].append(item)  # Append the current item to the existing list
+    
+    return grouped
+
+# Example usage
+output = group_by_location(list4)
+print(output)
+
+
+
+
+
+import logging
+import sys
+from logging.handlers import RotatingFileHandler
+
+class CustomLogger:
+    def __init__(self, name, log_file='app.log', level=logging.DEBUG, max_bytes=1048576, backup_count=5):
+        """Initialize the custom logger with console and rotating file handlers."""
+        self.logger = logging.getLogger(name)
+        self.logger.setLevel(level)
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+        # Console handler for outputting to the console
+        console_handler = logging.StreamHandler(sys.stdout)
+        console_handler.setFormatter(formatter)
+        self.logger.addHandler(console_handler)
+
+        # Rotating file handler for logging to a file with rotation
+        file_handler = RotatingFileHandler(log_file, maxBytes=max_bytes, backupCount=backup_count)
+        file_handler.setFormatter(formatter)
+        self.logger.addHandler(file_handler)
+
+    def get_logger(self):
+        return self.logger
+
+    def add_context(self, **context):
+        """Add context information to the logs."""
+        return ContextFilter(context)
+
+class ContextFilter(logging.Filter):
+    def __init__(self, context):
+        super().__init__()
+        self.context = context
+
+    def filter(self, record):
+        for key, value in self.context.items():
+            setattr(record, key, value)
+        return True
+
+# Example usage
+if __name__ == "__main__":
+    # Create a logger with a specific name
+    logger_util = CustomLogger('MyAppLogger')
+    logger = logger_util.get_logger()
+
+    # Add custom context (e.g., user ID, session ID)
+    context_filter = logger_util.add_context(user_id='12345', session_id='abcde')
+    logger.addFilter(context_filter)
+
+    # Log messages at various levels
+    logger.debug("This is a debug message")
+    logger.info("This is an info message")
+    logger.warning("This is a warning message")
+    logger.error("This is an error message")
+    logger.critical("This is a critical message")
+
+    # Additional log message with context
+    logger.info("User performed an action")
+
+
+
+
+class InvalidTransactionError(Exception):
+    """Exception raised for errors in the transaction process.
+
+    Attributes:
+        transaction_id -- ID of the transaction which caused the error
+        amount -- amount involved in the transaction
+        message -- explanation of the error
+    """
+
+    def __init__(self, transaction_id, amount, message="Invalid transaction"):
+        self.transaction_id = transaction_id
+        self.amount = amount
+        self.message = f"{message}: Transaction ID {transaction_id} with amount ${amount:.2f}"
+        super().__init__(self.message)
+
+    def log_error(self):
+        """Log the error details to a file or external system."""
+        with open('transaction_errors.log', 'a') as log_file:
+            log_file.write(f"ERROR: {self.message}\n")
+        print(f"Logged error: {self.message}")
+
+    def __str__(self):
+        return self.message
+
+# Example usage
+try:
+    # Simulate an invalid transaction scenario
+    transaction_id = 12345
+    amount = -100.50  # Negative amount is invalid
+    if amount < 0:
+        raise InvalidTransactionError(transaction_id, amount, "Negative amount not allowed")
+except InvalidTransactionError as e:
+    e.log_error()
+    print(e)

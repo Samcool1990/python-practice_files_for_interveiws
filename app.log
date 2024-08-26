@@ -1,0 +1,6 @@
+2024-08-26 08:38:06,119 - MyAppLogger - DEBUG - This is a debug message
+2024-08-26 08:38:06,119 - MyAppLogger - INFO - This is an info message
+2024-08-26 08:38:06,135 - MyAppLogger - WARNING - This is a warning message
+2024-08-26 08:38:06,135 - MyAppLogger - ERROR - This is an error message
+2024-08-26 08:38:06,135 - MyAppLogger - CRITICAL - This is a critical message
+2024-08-26 08:38:06,135 - MyAppLogger - INFO - User performed an action
