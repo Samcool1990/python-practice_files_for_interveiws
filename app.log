@@ -4,3 +4,39 @@
 2024-08-26 08:38:06,135 - MyAppLogger - ERROR - This is an error message
 2024-08-26 08:38:06,135 - MyAppLogger - CRITICAL - This is a critical message
 2024-08-26 08:38:06,135 - MyAppLogger - INFO - User performed an action
+2024-08-28 07:49:07,739 - MyAppLogger - DEBUG - This is a debug message
+2024-08-28 07:49:07,740 - MyAppLogger - INFO - This is an info message
+2024-08-28 07:49:07,741 - MyAppLogger - WARNING - This is a warning message
+2024-08-28 07:49:07,741 - MyAppLogger - ERROR - This is an error message
+2024-08-28 07:49:07,742 - MyAppLogger - CRITICAL - This is a critical message
+2024-08-28 07:49:07,742 - MyAppLogger - INFO - User performed an action
+2024-08-28 08:40:51,563 - MyAppLogger - DEBUG - This is a debug message
+2024-08-28 08:40:51,569 - MyAppLogger - INFO - This is an info message
+2024-08-28 08:40:51,569 - MyAppLogger - WARNING - This is a warning message
+2024-08-28 08:40:51,570 - MyAppLogger - ERROR - This is an error message
+2024-08-28 08:40:51,570 - MyAppLogger - CRITICAL - This is a critical message
+2024-08-28 08:40:51,570 - MyAppLogger - INFO - User performed an action
+2024-08-28 08:41:13,020 - MyAppLogger - DEBUG - This is a debug message
+2024-08-28 08:41:13,020 - MyAppLogger - INFO - This is an info message
+2024-08-28 08:41:13,020 - MyAppLogger - WARNING - This is a warning message
+2024-08-28 08:41:13,020 - MyAppLogger - ERROR - This is an error message
+2024-08-28 08:41:13,020 - MyAppLogger - CRITICAL - This is a critical message
+2024-08-28 08:41:13,020 - MyAppLogger - INFO - User performed an action
+2024-08-28 08:41:26,116 - MyAppLogger - DEBUG - This is a debug message
+2024-08-28 08:41:26,116 - MyAppLogger - INFO - This is an info message
+2024-08-28 08:41:26,125 - MyAppLogger - WARNING - This is a warning message
+2024-08-28 08:41:26,126 - MyAppLogger - ERROR - This is an error message
+2024-08-28 08:41:26,126 - MyAppLogger - CRITICAL - This is a critical message
+2024-08-28 08:41:26,127 - MyAppLogger - INFO - User performed an action
+2024-08-28 15:53:05,610 - MyAppLogger - DEBUG - This is a debug message
+2024-08-28 15:53:05,611 - MyAppLogger - INFO - This is an info message
+2024-08-28 15:53:05,613 - MyAppLogger - WARNING - This is a warning message
+2024-08-28 15:53:05,613 - MyAppLogger - ERROR - This is an error message
+2024-08-28 15:53:05,614 - MyAppLogger - CRITICAL - This is a critical message
+2024-08-28 15:53:05,615 - MyAppLogger - INFO - User performed an action
+2024-08-28 17:38:07,827 - MyAppLogger - DEBUG - This is a debug message
+2024-08-28 17:38:07,828 - MyAppLogger - INFO - This is an info message
+2024-08-28 17:38:07,829 - MyAppLogger - WARNING - This is a warning message
+2024-08-28 17:38:07,830 - MyAppLogger - ERROR - This is an error message
+2024-08-28 17:38:07,831 - MyAppLogger - CRITICAL - This is a critical message
+2024-08-28 17:38:07,832 - MyAppLogger - INFO - User performed an action

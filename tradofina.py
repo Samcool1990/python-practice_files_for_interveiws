@@ -38,9 +38,8 @@
 # FROM users;
 
 
-
-#list1= [1,2,[3,[4,[5]]]]
-#flatten the list
+# list1= [1,2,[3,[4,[5]]]]
+# flatten the list
 def flatten_list(lst):
     result = []
     for item in lst:
@@ -51,36 +50,36 @@ def flatten_list(lst):
     return result
 
 
-#Use recursion for factorial series
+# Use recursion for factorial series
 def factorial(n):
     if n == 0:
         return 1
     else:
-        return n * factorial(n-1)
+        return n * factorial(n - 1)
 
-#decorator
+
+# decorator
 def decorator(func):
     def wrapper(x, y):
         print("Before function execution>>>>>")
-        #result =
+        # result =
         print("After function execution>>>")
         return func(x, y)
+
     return wrapper
+
 
 @decorator
 def add(x, y):
     return x + y
+
+
 # create a new branch in git
-#git checkout -b feature/new-feature
+# git checkout -b feature/new-feature
 
 # asyncio
-'''asyncio is a library to write concurrent code using the async/await syntax. 
+"""asyncio is a library to write concurrent code using the async/await syntax. 
 asyncio is used as a foundation for multiple Python asynchronous frameworks that provide 
-high-performance network and web-servers, database connection libraries, distributed task queues, etc.'''
+high-performance network and web-servers, database connection libraries, distributed task queues, etc."""
 
 # MVT architecture
-
-
-
-
-

@@ -7,7 +7,7 @@ def recursive_search(dictionary, target_key):
             if result is not None:
                 return result
 
-                
+
 d1 = {"1": {"2": "some", "3": {"4": "the"}}}
 # Example usages
 result_3 = recursive_search(d1, "3")
@@ -18,8 +18,29 @@ print(result_3)  # Output: {'4': 'the'}
 print(result_4)  # Output: the
 print(result_2)  # Output: some
 
-#list1= [1,2,[3,[4,[5]]]]
-#flatten the list
+
+def flatten_dict(d, parent_key="", separator="_"):
+    items = {}
+    for key, value in d.items():
+        new_key = parent_key + separator + key if parent_key else key
+        if isinstance(value, dict):
+            items.update(flatten_dict(value, new_key, separator))
+        else:
+            items[new_key] = value
+    return items
+
+
+# Example nested dictionary
+nested_dict = {"a": 1, "b": {"c": 2, "d": {"e": 3}}, "f": 4}
+
+# Flatten the dictionary
+flattened_dict = flatten_dict(nested_dict)
+
+print(flattened_dict)
+
+
+# list1= [1,2,[3,[4,[5]]]]
+# flatten the list
 def flatten_list(lst):
     result = []
     for item in lst:
@@ -29,13 +50,14 @@ def flatten_list(lst):
             result.append(item)
     return result
 
+
 def reverse_lst(lst):
     if not lst:
         return []
     return [lst[-1]] + reverse_lst(lst[:-1])
 
 
-print(reverse_lst([1,6,9,4,5]))
+print(reverse_lst([1, 6, 9, 4, 5]))
 
 
 def reverse_str(str):
@@ -46,14 +68,17 @@ def reverse_str(str):
 
 print(reverse_str("Suman"))
 
+
 ##RECURSSION##
 def fibonacci3(n):
-    if n<=1:
+    if n <= 1:
         return n
     else:
-        return (fibonacci3(n-1)+fibonacci3(n-2))
-n=5
-if n<=0:
+        return fibonacci3(n - 1) + fibonacci3(n - 2)
+
+
+n = 5
+if n <= 0:
     print("Put valid number")
 else:
     for i in range(n):
@@ -64,4 +89,4 @@ def factorial(n):
     if n == 0:
         return 1
     else:
-        return n * factorial(n-1)
+        return n * factorial(n - 1)

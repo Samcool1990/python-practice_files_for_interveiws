@@ -14,12 +14,10 @@
 # WHERE Rank <= 3;
 
 
-
-
 def are_parentheses_balanced(s):
     stack = []
-    opening = '([{'
-    closing = ')]}'
+    opening = "([{"
+    closing = ")]}"
     for char in s:
         if char in opening:
             stack.append(char)
@@ -30,14 +28,13 @@ def are_parentheses_balanced(s):
                 return False
     return not stack
 
+
 # Example usage
 print(are_parentheses_balanced("()"))
 print(are_parentheses_balanced("()[]{}"))
 print(are_parentheses_balanced("([{}])"))
 print(are_parentheses_balanced("([)]"))
 print(are_parentheses_balanced("{{{{))))((()))}}}}"))
-
-
 
 
 def solve(A):
@@ -49,7 +46,11 @@ def solve(A):
             if not stack:
                 return 0
             top = stack.pop()
-            if (i == "}" and top != "{") or (i == ")" and top != "(") or (i == "]" and top != "["):
+            if (
+                (i == "}" and top != "{")
+                or (i == ")" and top != "(")
+                or (i == "]" and top != "[")
+            ):
                 return 0
 
     if not stack:

@@ -2,17 +2,20 @@ import threading
 
 list1 = [1, 5, 6, 9, 7, 4]
 
+
 def factorial(n):
     if n <= 1:
         return 1
     else:
         return n * factorial(n - 1)
 
-def calculate_factorials(chunk):
-    results = []
-    for num in chunk:
-        results.append(factorial(num))
-    return results
+
+def calculate_factorials(n):
+    if n <= 0:
+        return n
+    else:
+        return n * factorial(n - 1)
+
 
 def main():
     num_threads = 2  # Adjust the number of threads as needed
@@ -22,33 +25,35 @@ def main():
     for i in range(num_threads):
         start_idx = i * chunk_size
         end_idx = (i + 1) * chunk_size if i < num_threads - 1 else len(list1)
-        thread = threading.Thread(target=calculate_factorials, args=(list1[start_idx:end_idx],))
+        thread = threading.Thread(
+            target=calculate_factorials, args=(list1[start_idx:end_idx],)
+        )
         threads.append(thread)
         thread.start()
 
     for thread in threads:
         thread.join()
 
+
 if __name__ == "__main__":
     main()
 
 
-#SOrt by string element size
+# SOrt by string element size
 
 A = ["to", "hello", "i", "six"]
-Output = ["i","to", "six", "hello"]
+Output = ["i", "to", "six", "hello"]
 
 for i in range(len(A)):
-    for j in range(i+1, len(A)):
+    for j in range(i + 1, len(A)):
         if len(A[i]) > len(A[j]):
             A[i], A[j] = A[j], A[i]
 
 print(A)
 
 
-
 # How to Deploy django linux server
-'''To deploy a Django application on a Linux server, you'll need to follow several steps. 
+"""To deploy a Django application on a Linux server, you'll need to follow several steps. 
 Since you're a Backend Engineer, I'll provide you with a professional and practical guide:
 
 Prepare Your Server:
@@ -111,5 +116,4 @@ Set up monitoring, logging, and regular maintenance tasks like backups and secur
 Remember to replace myenv, myproject, and other placeholders with your actual project names and paths. 
 Additionally, adapt the instructions based on your specific project requirements and server setup. If you 
 have any specific questions or encounter any issues during the process, feel free to ask for further 
-assistance.'''
-
+assistance."""

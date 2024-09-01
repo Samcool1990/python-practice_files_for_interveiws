@@ -1,7 +1,7 @@
 # PROJECT Experience
 
 # System Design how to approach the requirements given by clients.
-'''Understand the Requirements:
+"""Understand the Requirements:
 Client Meetings: Schedule meetings with the client to discuss their needs and expectations. Make sure you understand their business goals and objectives.
 Ask Questions: Ask open-ended questions to get a detailed understanding of their requirements. Clarify any ambiguities and gather as much information as possible.
 Document Everything: Create detailed documentation of the requirements, including functional and non-functional aspects.
@@ -40,39 +40,40 @@ Documentation and Knowledge Sharing:
 Documentation: Create comprehensive documentation for developers, operators, and users.
 Training: Conduct training sessions for relevant stakeholders on how to use and maintain the system.
 Feedback and Iteration:
-Client Feedback: Gather feedback from the client during development and after deployment. Use it to make necessary improvements.'''
+Client Feedback: Gather feedback from the client during development and after deployment. Use it to make necessary improvements."""
 # Drop Undrop time travel etc in snowflake
 
 
 # Given a string find out by which elements can be remove to make it the string palindrome
 def min_removals_to_make_palindrome(s):
     n = len(s)
-    
+
     # Initialize a table to store LPS lengths
     dp = [[0] * n for _ in range(n)]
-    
+
     # All substrings of length 1 are palindromes
     for i in range(n):
         dp[i][i] = 1
-    
+
     # Build the table in bottom-up manner
-    for cl in range(2, n+1):
+    for cl in range(2, n + 1):
         for i in range(n - cl + 1):
             j = i + cl - 1
-            if (s[i] == s[j] and cl == 2):
+            if s[i] == s[j] and cl == 2:
                 dp[i][j] = 2
-            elif (s[i] == s[j]):
+            elif s[i] == s[j]:
                 dp[i][j] = dp[i + 1][j - 1] + 2
             else:
                 dp[i][j] = max(dp[i][j - 1], dp[i + 1][j])
-    
+
     # Length of longest palindromic subsequence
     lps_length = dp[0][n - 1]
-    
+
     # Number of characters to be removed
     min_removals = n - lps_length
-    
+
     return min_removals
+
 
 # Example usage
 s = "abcda"
