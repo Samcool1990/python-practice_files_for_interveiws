@@ -160,7 +160,7 @@ result = min_removals_to_make_palindrome(s)
 print(result)  # Output: 2
 
 
-def longest_palindrome(string):
+def longest_palindrome(s):
     n = len(s)
 
     dp = [[False for _ in range(n)] for _ in range(n)]
@@ -185,7 +185,7 @@ def longest_palindrome(string):
                 if k > max_length:
                     max_length = k
                     start = i
-    return string[start : start + max_length]
+    return s[start : start + max_length]
 
 
 # Example usage
@@ -303,7 +303,6 @@ def recursive_search(dictionary, key):
             result = recursive_search(value, key)
             if result is not None:
                 return result
-
 
 
 # Example usages

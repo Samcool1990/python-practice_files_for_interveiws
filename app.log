@@ -40,3 +40,9 @@
 2024-08-28 17:38:07,830 - MyAppLogger - ERROR - This is an error message
 2024-08-28 17:38:07,831 - MyAppLogger - CRITICAL - This is a critical message
 2024-08-28 17:38:07,832 - MyAppLogger - INFO - User performed an action
+2024-09-07 19:27:40,281 - MyAppLogger - DEBUG - This is a debug message
+2024-09-07 19:27:40,281 - MyAppLogger - INFO - This is an info message
+2024-09-07 19:27:40,281 - MyAppLogger - WARNING - This is a warning message
+2024-09-07 19:27:40,281 - MyAppLogger - ERROR - This is an error message
+2024-09-07 19:27:40,281 - MyAppLogger - CRITICAL - This is a critical message
+2024-09-07 19:27:40,281 - MyAppLogger - INFO - User performed an action
