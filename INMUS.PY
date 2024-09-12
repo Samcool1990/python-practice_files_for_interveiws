@@ -3,8 +3,9 @@
 
 # leetcode question on an array of strings & calculate in a given query how many vowelsadded string is there..
 # Problem Statement
-# # You're given an array of strings words and an array of queries. Each query is a pair [l, r], and your task is to return the 
-# number of strings in the range [l, r] (inclusive) that start and end with a vowel.
+# # You're given an array of strings words and an array of queries. Each query is a pair [l, r], and 
+# your task is to return the number of strings in the range [l, r] (inclusive) that start and end 
+# with a vowel.
 def count_vowel_strings_in_ranges(words, queries):
     def is_vowel(letter):
         return letter in "aeiouAEIOU"

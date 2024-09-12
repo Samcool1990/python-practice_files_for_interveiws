@@ -28,3 +28,4 @@ def lexicographic_sort(input_list):
 input_list = ["apple", "banana", "cherry", "date", "apricot"]
 sorted_list = lexicographic_sort(input_list)
 print(sorted_list)
+print(">>", sorted(input_list))

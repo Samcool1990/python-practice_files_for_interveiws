@@ -30,7 +30,8 @@ def longest_palindrome(s):
                     max_length = k
                     start = i
 
-    return s[start:start + max_length]
+    return s[start : start + max_length]
+
 
 # Example usage
 s = "babad"
@@ -38,13 +39,12 @@ result = longest_palindrome(s)
 print(result)  # Output: "bab"
 
 
-
 # sort a list without sort function
-lst = [4,6,9,8]
+lst = [4, 6, 9, 8]
 for i in range(len(lst)):
-    for j in range(i+1, len(lst)):
+    for j in range(i + 1, len(lst)):
         if lst[i] > lst[j]:
-            lst[i], lst[j] = lst[j], lst[i] 
+            lst[i], lst[j] = lst[j], lst[i]
 
 print(lst)
-#Tech stack
+# Tech stack
