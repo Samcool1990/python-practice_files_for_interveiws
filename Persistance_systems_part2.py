@@ -20,7 +20,7 @@ result = filter(odd, list2)
 print(list(result))
 
 
-# # reverse a list with [::-1]
+# # reverse a list without [::-1]
 # list3 = [5,7,9,7,6,9,4]
 # n = len(list3)
 # for i in range(int(n/2)):
