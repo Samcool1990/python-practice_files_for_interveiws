@@ -1,5 +1,5 @@
-#YOu have a shopping list which you nee
-#Menu driven coding 
+# YOu have a shopping list which you nee
+# Menu driven coding
 def shopping_list():
     # Create an empty dictionary to store the shopping list
     shopping_dict = {}
@@ -50,14 +50,14 @@ def shopping_list():
         else:
             print("Invalid choice. Please choose a valid option (1/2/3/4/5).")
 
+
 # if __name__ == "__main__":
 print(shopping_list())
 
 
-
-#Q2  Given array will check summation of 3 elements at a time & find out the maximimum sum.
-A = [35,42,35,97,66,107,121,83]
-Output = [311]   #sumaation of 107,121,83
+# Q2  Given array will check summation of 3 elements at a time & find out the maximimum sum.
+A = [35, 42, 35, 97, 66, 107, 121, 83]
+Output = [311]  # sumaation of 107,121,83
 
 
 A = [35, 42, 35, 97, 66, 107, 121, 83]
@@ -66,7 +66,7 @@ A = [35, 42, 35, 97, 66, 107, 121, 83]
 A.sort(reverse=True)
 
 # Initialize variables to store the maximum sum and the current sum
-max_sum = float('-inf')
+max_sum = float("-inf")
 current_sum = 0
 
 # Iterate through the sorted array and sum every 3 elements
