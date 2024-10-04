@@ -7,7 +7,7 @@ for i in name:
 new_str = new_str[:-1]
 
 print(new_str)
-new_str2 = f"{str(''.join([i + '_' for i in name]).strip(''))[:-1]}"
+new_str2 = str("".join([i + "_" for i in name]).strip(""))[:-1]
 print(new_str2)
 
 # AWS GLUE

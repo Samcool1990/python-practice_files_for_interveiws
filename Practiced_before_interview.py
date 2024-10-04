@@ -14,7 +14,7 @@ def roman(number):
 print(roman(90))
 
 
-def number_to_words2(n: int) -> str:
+def number_to_words(n: int) -> str:
     if n == 0:
         return "zero"
 
@@ -123,7 +123,7 @@ def number_to_words2(n: int) -> str:
 
 numbers = 999
 # Example usage:
-print(number_to_words2(numbers))
+print(number_to_words(numbers))
 
 
 # Given a string find out by which elements can be remove to make it the string palindrome
