@@ -21,10 +21,10 @@ import logging
 def log_function_calling(func):
     def decorated(*args, **kwargs):
         logging.info(f"Calling {func.__name__} with args = {args}, KWARGS = {kwargs}")
-        # print(f"Calling {func.__name__} with args = {args}, KWARGS = {kwargs}")
+        print(f"Calling {func.__name__} with args = {args}, KWARGS = {kwargs}")
         result = func(*args, **kwargs)
         logging.info(f"{func.__name__} returned {result}")
-        # print(f"{func.__name__} returned {result}")
+        print(f"{func.__name__} returned {result}")
         return result
 
     print(f"{func.__name__} returned ")
@@ -33,7 +33,10 @@ def log_function_calling(func):
 
 @log_function_calling
 def my_function(a, b):
-    print(a + b)
+    return a + b
+
+
+print(":::::", my_function(5, 3))
 
 
 obj = my_function(5, 3)

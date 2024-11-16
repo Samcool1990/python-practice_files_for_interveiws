@@ -57,13 +57,14 @@ print(shopping_list())
 
 # Q2  Given array will check summation of 3 elements at a time & find out the maximimum sum.
 A = [35, 42, 35, 97, 66, 107, 121, 83]
-Output = [311]  # sumaation of 107,121,83
+Output = [325]  # sumaation of 107,121,97
 
 
 A = [35, 42, 35, 97, 66, 107, 121, 83]
 
 # Sort the array in descending order to make it easier to find the maximum sum
 A.sort(reverse=True)
+print(">>", A)
 
 # Initialize variables to store the maximum sum and the current sum
 max_sum = float("-inf")
@@ -75,4 +76,4 @@ for i in range(0, len(A) - 2, 3):
     max_sum = max(max_sum, current_sum)
 
 # Print the maximum sum
-print([max_sum])
+print(max_sum)

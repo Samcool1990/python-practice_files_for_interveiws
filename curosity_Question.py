@@ -16,8 +16,8 @@ A2 = [1, 2, 2, 3, 4, 5]
 index_A1 = find_duplicate_index(A1)
 index_A2 = find_duplicate_index(A2)
 
-print(index_A1)  # Output: 2
-print(index_A2)  # Output: 3
+print(index_A1)  # Output: 4
+print(index_A2)  # Output: 2
 
 
 # lexicographically algorithm in python

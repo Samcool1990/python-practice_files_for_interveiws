@@ -76,3 +76,15 @@
 2024-10-04 12:10:01,261 - MyAppLogger - ERROR - This is an error message
 2024-10-04 12:10:01,261 - MyAppLogger - CRITICAL - This is a critical message
 2024-10-04 12:10:01,262 - MyAppLogger - INFO - User performed an action
+2024-10-04 12:25:51,491 - MyAppLogger - DEBUG - This is a debug message
+2024-10-04 12:25:51,492 - MyAppLogger - INFO - This is an info message
+2024-10-04 12:25:51,493 - MyAppLogger - WARNING - This is a warning message
+2024-10-04 12:25:51,494 - MyAppLogger - ERROR - This is an error message
+2024-10-04 12:25:51,494 - MyAppLogger - CRITICAL - This is a critical message
+2024-10-04 12:25:51,495 - MyAppLogger - INFO - User performed an action
+2024-10-04 12:36:31,622 - MyAppLogger - DEBUG - This is a debug message
+2024-10-04 12:36:31,624 - MyAppLogger - INFO - This is an info message
+2024-10-04 12:36:31,627 - MyAppLogger - WARNING - This is a warning message
+2024-10-04 12:36:31,631 - MyAppLogger - ERROR - This is an error message
+2024-10-04 12:36:31,633 - MyAppLogger - CRITICAL - This is a critical message
+2024-10-04 12:36:31,638 - MyAppLogger - INFO - User performed an action
