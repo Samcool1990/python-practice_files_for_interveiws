@@ -477,3 +477,127 @@ try:
 except InvalidTransactionError as e:
     e.log_error()
     print(e)
+
+
+# Questions: Write a custom exception in fastapi
+# Answer:Creating custom exceptions in FastAPI involves defining a custom exception class and integrating it with FastAPI's exception handling system. Here's how you can do it step by step:
+
+# 1. Define a Custom Exception Class
+# You can create a custom exception class by inheriting from Python's Exception class.
+
+
+# python
+# Copy code
+class CustomException(Exception):
+    def __init__(self, name: str, detail: str):
+        self.name = name
+        self.detail = detail
+
+
+# 2. Add an Exception Handler
+# FastAPI allows you to register custom exception handlers using the @app.exception_handler decorator. The handler specifies how FastAPI should respond when the custom exception is raised.
+
+# python
+# Copy code
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import JSONResponse
+
+app = FastAPI()
+
+
+class CustomException(Exception):
+    def __init__(self, name: str, detail: str):
+        self.name = name
+        self.detail = detail
+
+
+@app.exception_handler(CustomException)
+async def custom_exception_handler(request, exc: CustomException):
+    return JSONResponse(
+        status_code=400,
+        content={"error": exc.name, "detail": exc.detail},
+    )
+
+
+# 3. Raise the Custom Exception
+# You can raise your custom exception wherever necessary in your API endpoints.
+
+
+# python
+# Copy code
+@app.get("/items/{item_id}")
+async def read_item(item_id: int):
+    if item_id <= 0:
+        raise CustomException(
+            name="InvalidItemID", detail="Item ID must be a positive integer."
+        )
+    return {"item_id": item_id}
+
+
+# 4. Test the API
+# Example Request:
+# bash
+# Copy code
+# curl -X GET http://127.0.0.1:8000/items/0
+# Example Response:
+# json
+# Copy code
+# {
+#   "error": "InvalidItemID",
+#   "detail": "Item ID must be a positive integer."
+# }
+# 5. Using FastAPI’s HTTPException
+# If you don't need a custom class but still want structured error handling, you can use FastAPI’s HTTPException directly:
+
+# python
+# Copy code
+# from fastapi import HTTPException
+
+# @app.get("/items/{item_id}")
+# async def read_item(item_id: int):
+#     if item_id <= 0:
+#         raise HTTPException(status_code=400, detail="Item ID must be a positive integer.")
+#     return {"item_id": item_id}
+# 6. Advanced Example with Metadata
+# You can enrich your custom exception with metadata for more complex use cases.
+
+
+# python
+# Copy code
+class DetailedCustomException(Exception):
+    def __init__(self, code: int, message: str, meta: dict = None):
+        self.code = code
+        self.message = message
+        self.meta = meta or {}
+
+
+@app.exception_handler(DetailedCustomException)
+async def detailed_custom_exception_handler(request, exc: DetailedCustomException):
+    return JSONResponse(
+        status_code=exc.code,
+        content={"error": exc.message, "meta": exc.meta},
+    )
+
+
+@app.get("/process")
+async def process_data():
+    raise DetailedCustomException(
+        code=422,
+        message="Processing error occurred.",
+        meta={"info": "Failed due to invalid data.", "retryable": False},
+    )
+
+
+# Example Response:
+# json
+# Copy code
+# {
+#     "error": "Processing error occurred.",
+#     "meta": {"info": "Failed due to invalid data.", "retryable": false},
+# }
+# Best Practices
+# Consistent Error Format: Define a standard format for errors and ensure all endpoints follow it.
+# Logging: Log custom exceptions for debugging and auditing.
+# Custom Middleware: For global error handling, consider using middleware.
+# Validation: Use Pydantic models and FastAPI's built-in validation for most validation tasks to reduce the need for custom exceptions.
+# This structure makes your API responses predictable, user-friendly, and easy to debug.
