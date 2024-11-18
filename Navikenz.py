@@ -20,4 +20,13 @@ print(combined_dict)
 # Draw the django architecture.
 # Draw how viewes render template & model to render page
 # numpy vs list for arithmetic operations
-# In AWS how many type of load balancer
+# Question: In AWS how many type of load balancer
+# Answer: Amazon Web Services (AWS) offers four types of load balancers:
+# Application Load Balancer (ALB)
+# Good for managing HTTP and HTTPS traffic, and performing advanced routing. ALB can route traffic based on content, URL path, or host header.
+# Network Load Balancer (NLB)
+# Designed for high performance and low latency, NLB is good for handling TCP/UDP traffic. NLB routes requests to the closest Availability Zones to efficiently distribute global traffic.
+# Gateway Load Balancer (GLB)
+# Used to deploy, scale, and manage virtual appliances like firewalls and intrusion detection systems. GLB doesn't act as a proxy or terminate the connection, it forwards traffic directly.
+# Classic Load Balancer (CLB)
+# The legacy option, CLB is primarily for applications that haven't been migrated to newer load balancer types.
