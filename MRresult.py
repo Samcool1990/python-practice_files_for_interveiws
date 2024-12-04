@@ -765,4 +765,217 @@ async def fetch_records(
 
 
 
+# Question: How would you create authorization in aapplication. FIrst tell how many types of authorization & 
+# Authentication are there & then how would you implement each of them with code example.
+# In application security, authentication and authorization are two crucial concepts that ensure only authorized users can access specific resources. Authentication verifies the identity of users, while authorization determines whether they can perform specific actions or access resources. Let’s break down the types of authentication and authorization, and how you can implement them.
+
+# Types of Authentication
+# Authentication is about verifying the identity of a user. Here are the common types:
+
+# Password-based Authentication:
+
+# The user proves their identity by providing a username and password.
+# Multi-factor Authentication (MFA):
+
+# An enhanced version of password authentication where users must provide two or more verification factors (e.g., a password and a code sent to their phone).
+# Token-based Authentication (JWT, OAuth):
+
+# The user logs in once, and a token (usually a JSON Web Token - JWT) is generated for subsequent requests to prove their identity.
+# OAuth/OpenID Connect:
+
+# A protocol for token-based authentication that enables third-party authentication without exposing passwords.
+# Biometric Authentication:
+
+# Authentication based on unique biological traits like fingerprints, facial recognition, or iris scanning.
+# Certificate-based Authentication:
+
+# The user proves their identity with a digital certificate, which is commonly used for secure communications.
+# Types of Authorization
+# Authorization refers to the process of granting or denying access to resources based on the authenticated identity. Here are common types of authorization:
+
+# Role-Based Access Control (RBAC):
+
+# Access to resources is granted based on user roles (e.g., Admin, User).
+# Attribute-Based Access Control (ABAC):
+
+# Access is based on attributes of the user (e.g., department, location).
+# Discretionary Access Control (DAC):
+
+# The owner of a resource decides who can access it and with what permissions.
+# Mandatory Access Control (MAC):
+
+# A system-enforced access control where users cannot modify access controls; access is determined by system policies.
+# Implementation of Authentication and Authorization
+# 1. Password-based Authentication (Example using Flask)
+# Let's implement Password-based Authentication using Flask.
+
+# python
+# Copy code
+# from flask import Flask, request, jsonify
+# from werkzeug.security import generate_password_hash, check_password_hash
+
+# app = Flask(__name__)
+
+# # Dummy user data (in real applications, use a database)
+# users_db = {
+#     "user1": generate_password_hash("password123"),
+# }
+
+# @app.route('/login', methods=['POST'])
+# def login():
+#     username = request.json.get('username')
+#     password = request.json.get('password')
+
+#     if username in users_db and check_password_hash(users_db[username], password):
+#         return jsonify({"message": "Login successful!"}), 200
+#     else:
+#         return jsonify({"message": "Invalid credentials!"}), 401
+
+# if __name__ == '__main__':
+#     app.run(debug=True)
+# Login process: A POST request with a username and password is checked against a stored hash (password is hashed for security).
+# 2. JWT Token-based Authentication
+# Let's implement JWT Authentication.
+
+# python
+# Copy code
+# import jwt
+# import datetime
+# from flask import Flask, request, jsonify
+
+# app = Flask(__name__)
+# SECRET_KEY = 'your_secret_key'
+
+# # Dummy user data
+# users_db = {
+#     "user1": "password123"
+# }
+
+# @app.route('/login', methods=['POST'])
+# def login():
+#     username = request.json.get('username')
+#     password = request.json.get('password')
+
+#     if username in users_db and users_db[username] == password:
+#         payload = {'username': username, 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)}
+#         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
+#         return jsonify({"token": token}), 200
+#     else:
+#         return jsonify({"message": "Invalid credentials!"}), 401
+
+# @app.route('/protected', methods=['GET'])
+# def protected():
+#     token = request.headers.get('Authorization')
+#     if not token:
+#         return jsonify({"message": "Token is missing!"}), 403
+
+#     try:
+#         payload = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
+#         return jsonify({"message": f"Hello, {payload['username']}!"}), 200
+#     except jwt.ExpiredSignatureError:
+#         return jsonify({"message": "Token has expired!"}), 403
+#     except jwt.InvalidTokenError:
+#         return jsonify({"message": "Invalid token!"}), 403
+
+# if __name__ == '__main__':
+#     app.run(debug=True)
+# Login process: After successful authentication, a JWT token is issued. The /protected endpoint checks if the user provides a valid token.
+# 3. Role-Based Access Control (RBAC) with Flask
+# Here’s an implementation of Role-Based Authorization using Flask.
+
+# python
+# Copy code
+# from flask import Flask, request, jsonify
+
+# app = Flask(__name__)
+
+# # Dummy user data with roles
+# users_db = {
+#     "admin": {"password": "admin123", "role": "admin"},
+#     "user": {"password": "user123", "role": "user"}
+# }
+
+# def check_role(required_role):
+#     def wrapper(func):
+#         def inner(*args, **kwargs):
+#             username = request.json.get('username')
+#             password = request.json.get('password')
+
+#             if username in users_db and users_db[username]["password"] == password:
+#                 if users_db[username]["role"] == required_role:
+#                     return func(*args, **kwargs)
+#                 else:
+#                     return jsonify({"message": "Access denied, insufficient permissions!"}), 403
+#             else:
+#                 return jsonify({"message": "Invalid credentials!"}), 401
+#         return inner
+#     return wrapper
+
+# @app.route('/admin', methods=['POST'])
+# @check_role('admin')
+# def admin():
+#     return jsonify({"message": "Welcome, Admin!"}), 200
+
+# @app.route('/user', methods=['POST'])
+# @check_role('user')
+# def user():
+#     return jsonify({"message": "Welcome, User!"}), 200
+
+# if __name__ == '__main__':
+#     app.run(debug=True)
+# RBAC Authorization: Users are assigned roles (admin, user). Only users with the appropriate role can access the protected routes.
+# 4. Multi-factor Authentication (MFA) with Flask
+# Implementing Multi-factor Authentication can involve sending a code (like an OTP) to the user’s phone or email.
+
+# python
+# Copy code
+# import random
+# import time
+# from flask import Flask, request, jsonify
+
+# app = Flask(__name__)
+
+# # Dummy user data
+# users_db = {
+#     "user1": {"password": "password123", "otp": None, "otp_expiry": None}
+# }
+
+# def send_otp():
+#     otp = random.randint(100000, 999999)
+#     return otp
+
+# @app.route('/login', methods=['POST'])
+# def login():
+#     username = request.json.get('username')
+#     password = request.json.get('password')
+
+#     if username in users_db and users_db[username]["password"] == password:
+#         otp = send_otp()
+#         users_db[username]["otp"] = otp
+#         users_db[username]["otp_expiry"] = time.time() + 300  # OTP expires in 5 minutes
+#         return jsonify({"message": "OTP sent to your phone", "otp": otp}), 200
+#     else:
+#         return jsonify({"message": "Invalid credentials!"}), 401
+
+# @app.route('/verify_otp', methods=['POST'])
+# def verify_otp():
+#     username = request.json.get('username')
+#     otp = request.json.get('otp')
+
+#     if username in users_db and users_db[username]["otp"] == otp:
+#         if time.time() > users_db[username]["otp_expiry"]:
+#             return jsonify({"message": "OTP expired!"}), 400
+#         return jsonify({"message": "Login successful!"}), 200
+#     else:
+#         return jsonify({"message": "Invalid OTP!"}), 401
+
+# if __name__ == '__main__':
+#     app.run(debug=True)
+# MFA Implementation: First, the user logs in with their credentials. If correct, an OTP is sent (here simulated) and must be verified.
+# Summary
+# Authentication: Verifies the identity of a user. We implemented password-based, JWT, and multi-factor authentication.
+# Authorization: Grants or denies access to resources. We demonstrated role-based access control (RBAC) for different user roles.
+# Each type has its strengths depending on the application's security requirements, and combining them (e.g., using both JWT and role-based access control) is common for enhanced security.
+
+
 
