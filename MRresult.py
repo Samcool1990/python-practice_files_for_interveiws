@@ -979,3 +979,133 @@ async def fetch_records(
 
 
 
+# Question: In Python what is class method, static method & abstract method. explain it like it was asked in 
+# interview with reallife example.
+
+#Answer:
+# In Python, class methods, static methods, and abstract methods are all different types of methods that serve unique purposes within a class. Here’s an explanation of each with real-life examples:
+
+# 1. Class Method
+# What it is:
+# A class method is a method that is bound to the class rather than the instance. It can modify the class state that applies across all instances of the class. Class methods take cls as the first parameter, which refers to the class itself.
+
+# Real-life Example:
+# Imagine a Bank class where you want to keep track of the total balance across all customers (class-level attribute). A class method can be used to calculate the total balance or perform operations affecting all customers.
+
+# Example Code:
+# python
+# Copy code
+# class Bank:
+#     total_balance = 0  # Class-level attribute
+    
+#     def __init__(self, name, balance):
+#         self.name = name
+#         self.balance = balance
+#         Bank.total_balance += balance  # Update total balance
+
+#     @classmethod
+#     def show_total_balance(cls):
+#         print(f"Total balance across all customers: {cls.total_balance}")
+
+# # Creating instances of Bank
+# customer1 = Bank("Alice", 1000)
+# customer2 = Bank("Bob", 1500)
+
+# # Calling class method
+# Bank.show_total_balance()  # Output: Total balance across all customers: 2500
+# Key Points:
+# @classmethod decorator is used.
+# cls is used to refer to the class itself (not an instance).
+# Can be used to modify class-level attributes.
+# 2. Static Method
+# What it is:
+# A static method is a method that doesn't take a reference to the instance or class as its first parameter. It behaves like a regular function that belongs to a class, but it doesn't need to access or modify the class or instance data. Static methods are defined with the @staticmethod decorator.
+
+# Real-life Example:
+# Consider a Calculator class. If you want to implement basic operations like addition, subtraction, multiplication, etc., they don't need access to the instance of the calculator, and they can be static methods because they operate independently of any object state.
+
+# Example Code:
+# python
+# Copy code
+# class Calculator:
+    
+#     @staticmethod
+#     def add(a, b):
+#         return a + b
+
+#     @staticmethod
+#     def multiply(a, b):
+#         return a * b
+
+# # Calling static methods without creating an instance
+# result1 = Calculator.add(5, 3)  # Output: 8
+# result2 = Calculator.multiply(4, 6)  # Output: 24
+
+# print(result1)
+# print(result2)
+# Key Points:
+# @staticmethod decorator is used.
+# No reference to self or cls is needed.
+# Works like a regular function, but logically grouped within the class.
+# 3. Abstract Method
+# What it is:
+# An abstract method is a method that is declared in an abstract class (a class that cannot be instantiated) and must be implemented by any subclass of that abstract class. Abstract methods define a blueprint for the subclasses, but the actual implementation is left to the subclasses.
+
+# Real-life Example:
+# Think of an Employee class, where you have different types of employees, such as FullTimeEmployee and PartTimeEmployee. You can define an abstract method calculate_salary() in the Employee class, but the actual salary calculation will differ for full-time and part-time employees. Each subclass must implement this method.
+
+# Example Code:
+# python
+# Copy code
+# from abc import ABC, abstractmethod
+
+# # Abstract class
+# class Employee(ABC):
+    
+#     @abstractmethod
+#     def calculate_salary(self):
+#         pass
+
+# # Subclass for FullTimeEmployee
+# class FullTimeEmployee(Employee):
+#     def __init__(self, name, salary):
+#         self.name = name
+#         self.salary = salary
+        
+#     def calculate_salary(self):
+#         return self.salary  # For full-time, just return salary
+
+# # Subclass for PartTimeEmployee
+# class PartTimeEmployee(Employee):
+#     def __init__(self, name, hourly_rate, hours_worked):
+#         self.name = name
+#         self.hourly_rate = hourly_rate
+#         self.hours_worked = hours_worked
+        
+#     def calculate_salary(self):
+#         return self.hourly_rate * self.hours_worked  # For part-time, calculate by hours worked
+
+# # Trying to create an instance of the abstract class (Employee) will raise an error
+# # emp = Employee("John")  # This will raise TypeError: Can't instantiate abstract class
+
+# # Correct usage with subclasses
+# full_time_emp = FullTimeEmployee("Alice", 5000)
+# part_time_emp = PartTimeEmployee("Bob", 20, 80)
+
+# print(f"Full-time salary: {full_time_emp.calculate_salary()}")
+# print(f"Part-time salary: {part_time_emp.calculate_salary()}")
+# Key Points:
+# @abstractmethod decorator is used to define abstract methods.
+# The abstract class cannot be instantiated directly.
+# Any subclass must provide an implementation for the abstract methods.
+# Summary:
+# Class Method (@classmethod): A method that operates on the class itself and can modify class-level attributes. It takes cls as the first argument.
+
+# Example: A method to track the total balance across all customers in a Bank class.
+# Static Method (@staticmethod): A method that doesn’t operate on class or instance-level attributes and doesn't require access to self or cls. It's like a regular function but belongs to the class.
+
+# Example: Simple mathematical operations in a Calculator class.
+# Abstract Method (@abstractmethod): A method in an abstract class that must be implemented by any subclass. It is used when you have a general blueprint, but the specific implementation is left to the subclasses.
+
+# Example: Calculating salaries for different types of employees in an Employee class.
+# In an interview, you might also be asked to show how to apply these methods in real-world scenarios, so be ready with examples like the ones above, where these concepts are applied in practical situations.
