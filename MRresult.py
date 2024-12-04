@@ -703,3 +703,66 @@ async def fetch_records(
 # Optimize Costs: Use Spot Instances for batch jobs and control runtimes.
 # Testing: Test schedules in non-production environments to avoid unexpected behavior.
 # Let me know if you need help with implementation or specific AWS scheduler use cases!
+
+
+
+# Question:In a class you have __init__ & a global object.How can you access the global object. DO you need the self keyword.
+# 
+#Answer: In a Python class, you can access a global object from within the class methods, including the 
+# __init__ method, without needing the self keyword. The self keyword is used to refer to instance variables 
+# or methods specific to the instance of the class. However, for global objects (those declared outside the 
+# class), you can access them directly by their name without using self.
+
+# Here's an example to clarify the concept:
+
+# Example:
+# python
+# Copy code
+# # Global object
+# global_obj = "I am a global object"
+
+# class MyClass:
+#     def __init__(self):
+#         # Accessing the global object in the constructor (without 'self')
+#         print(global_obj)
+
+#     def some_method(self):
+#         # Accessing the global object in another method (without 'self')
+#         print(global_obj)
+
+# # Create an instance of the class
+# obj = MyClass()  # This will print the global object
+# obj.some_method()  # This will print the global object again
+# Key Points:
+# Global object access: You access a global object directly by its name (e.g., global_obj), without needing 
+# to use self. Self keyword: The self keyword is used for accessing instance variables or methods, but it is
+#  not required for accessing global variables. If you want to modify the global object inside a class, you 
+# can use the global keyword inside the method to indicate that you're working with the global variable, 
+# rather than creating a local one.
+
+# Example of modifying the global object:
+# python
+# Copy code
+# global_obj = "Initial value"
+
+# class MyClass:
+#     def __init__(self):
+#         global global_obj  # Declare that we are referring to the global variable
+#         global_obj = "Modified by class"
+        
+#     def print_global(self):
+#         print(global_obj)
+
+# # Create an instance
+# obj = MyClass()
+# obj.print_global()  # This will print "Modified by class"
+# In this case, the global keyword is needed to modify the global object from inside the method.
+
+# To summarize:
+
+# You do not need self to access a global object inside a class.
+# The self keyword is used to refer to instance variables and methods.
+
+
+
+
