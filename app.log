@@ -94,3 +94,9 @@
 2024-11-18 08:38:14,395 - MyAppLogger - ERROR - This is an error message
 2024-11-18 08:38:14,395 - MyAppLogger - CRITICAL - This is a critical message
 2024-11-18 08:38:14,395 - MyAppLogger - INFO - User performed an action
+2024-11-30 11:02:44,927 - MyAppLogger - DEBUG - This is a debug message
+2024-11-30 11:02:44,927 - MyAppLogger - INFO - This is an info message
+2024-11-30 11:02:44,940 - MyAppLogger - WARNING - This is a warning message
+2024-11-30 11:02:44,940 - MyAppLogger - ERROR - This is an error message
+2024-11-30 11:02:44,942 - MyAppLogger - CRITICAL - This is a critical message
+2024-11-30 11:02:44,942 - MyAppLogger - INFO - User performed an action

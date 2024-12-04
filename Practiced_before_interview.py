@@ -528,7 +528,7 @@ async def custom_exception_handler(request, exc: CustomException):
 @app.get("/items/{item_id}")
 async def read_item(item_id: int):
     if item_id <= 0:
-        raise CustomException(
+        raise Cuscustom_exception_handlertomException(
             name="InvalidItemID", detail="Item ID must be a positive integer."
         )
     return {"item_id": item_id}

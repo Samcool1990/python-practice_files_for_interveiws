@@ -9,7 +9,7 @@ s = str[-1:-3:-1]
 print(s)
 
 ##Use SET without set function
-list1 = [1, 3, 3, 9, 66]
+list1 = [1, 2, 3, 2, 1, 4, 5, 4, 6]
 new_lst = []
 n = len(list1)
 for i in list1:
