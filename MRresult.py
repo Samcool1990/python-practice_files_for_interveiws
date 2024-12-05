@@ -279,7 +279,8 @@ async def fetch_records(
 
 # Question: draw back of indexes in database table ?
 # Answer:
-# Indexes in a database table are essential for improving query performance, but they come with certain drawbacks. Here are the key disadvantages:
+# Indexes in a database table are essential for improving query performance, but they come with certain 
+# drawbacks. Here are the key disadvantages:
 
 # 1. Increased Storage Space
 # Drawback: Indexes consume additional disk space because the database must store the index data alongside the table data.
@@ -706,7 +707,8 @@ async def fetch_records(
 
 
 
-# Question:In a class you have __init__ & a global object.How can you access the global object. DO you need the self keyword.
+# Question:In a class you have __init__ & a global object.How can you access the global object. DO you need 
+# the self keyword.
 # 
 #Answer: In a Python class, you can access a global object from within the class methods, including the 
 # __init__ method, without needing the self keyword. The self keyword is used to refer to instance variables 
@@ -773,28 +775,30 @@ async def fetch_records(
 # Authentication is about verifying the identity of a user. Here are the common types:
 
 # Password-based Authentication:
-
 # The user proves their identity by providing a username and password.
+
 # Multi-factor Authentication (MFA):
+# An enhanced version of password authentication where users must provide two or more verification factors 
+# (e.g., a password and a code sent to their phone).
 
-# An enhanced version of password authentication where users must provide two or more verification factors (e.g., a password and a code sent to their phone).
 # Token-based Authentication (JWT, OAuth):
+# The user logs in once, and a token (usually a JSON Web Token - JWT) is generated for subsequent requests 
+# to prove their identity.
 
-# The user logs in once, and a token (usually a JSON Web Token - JWT) is generated for subsequent requests to prove their identity.
 # OAuth/OpenID Connect:
+# A protocol for token-based authentication that enables third-party authentication without exposing 
+# passwords.
 
-# A protocol for token-based authentication that enables third-party authentication without exposing passwords.
 # Biometric Authentication:
-
 # Authentication based on unique biological traits like fingerprints, facial recognition, or iris scanning.
-# Certificate-based Authentication:
 
+# Certificate-based Authentication:
 # The user proves their identity with a digital certificate, which is commonly used for secure communications.
 # Types of Authorization
-# Authorization refers to the process of granting or denying access to resources based on the authenticated identity. Here are common types of authorization:
+# Authorization refers to the process of granting or denying access to resources based on the authenticated 
 
+# identity. Here are common types of authorization:
 # Role-Based Access Control (RBAC):
-
 # Access to resources is granted based on user roles (e.g., Admin, User).
 # Attribute-Based Access Control (ABAC):
 
@@ -804,173 +808,174 @@ async def fetch_records(
 # The owner of a resource decides who can access it and with what permissions.
 # Mandatory Access Control (MAC):
 
-# A system-enforced access control where users cannot modify access controls; access is determined by system policies.
+# A system-enforced access control where users cannot modify access controls; access is determined by system 
+# policies.
 # Implementation of Authentication and Authorization
 # 1. Password-based Authentication (Example using Flask)
 # Let's implement Password-based Authentication using Flask.
 
 # python
 # Copy code
-# from flask import Flask, request, jsonify
-# from werkzeug.security import generate_password_hash, check_password_hash
+from flask import Flask, request, jsonify
+from werkzeug.security import generate_password_hash, check_password_hash
 
-# app = Flask(__name__)
+app = Flask(__name__)
 
-# # Dummy user data (in real applications, use a database)
-# users_db = {
-#     "user1": generate_password_hash("password123"),
-# }
+# Dummy user data (in real applications, use a database)
+users_db = {
+    "user1": generate_password_hash("password123"),
+}
 
-# @app.route('/login', methods=['POST'])
-# def login():
-#     username = request.json.get('username')
-#     password = request.json.get('password')
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.json.get('username')
+    password = request.json.get('password')
 
-#     if username in users_db and check_password_hash(users_db[username], password):
-#         return jsonify({"message": "Login successful!"}), 200
-#     else:
-#         return jsonify({"message": "Invalid credentials!"}), 401
+    if username in users_db and check_password_hash(users_db[username], password):
+        return jsonify({"message": "Login successful!"}), 200
+    else:
+        return jsonify({"message": "Invalid credentials!"}), 401
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
 # Login process: A POST request with a username and password is checked against a stored hash (password is hashed for security).
 # 2. JWT Token-based Authentication
 # Let's implement JWT Authentication.
 
 # python
 # Copy code
-# import jwt
-# import datetime
-# from flask import Flask, request, jsonify
+import jwt
+import datetime
+from flask import Flask, request, jsonify
 
-# app = Flask(__name__)
-# SECRET_KEY = 'your_secret_key'
+app = Flask(__name__)
+SECRET_KEY = 'your_secret_key'
 
-# # Dummy user data
-# users_db = {
-#     "user1": "password123"
-# }
+# Dummy user data
+users_db = {
+    "user1": "password123"
+}
 
-# @app.route('/login', methods=['POST'])
-# def login():
-#     username = request.json.get('username')
-#     password = request.json.get('password')
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.json.get('username')
+    password = request.json.get('password')
 
-#     if username in users_db and users_db[username] == password:
-#         payload = {'username': username, 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)}
-#         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
-#         return jsonify({"token": token}), 200
-#     else:
-#         return jsonify({"message": "Invalid credentials!"}), 401
+    if username in users_db and users_db[username] == password:
+        payload = {'username': username, 'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)}
+        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
+        return jsonify({"token": token}), 200
+    else:
+        return jsonify({"message": "Invalid credentials!"}), 401
 
-# @app.route('/protected', methods=['GET'])
-# def protected():
-#     token = request.headers.get('Authorization')
-#     if not token:
-#         return jsonify({"message": "Token is missing!"}), 403
+@app.route('/protected', methods=['GET'])
+def protected():
+    token = request.headers.get('Authorization')
+    if not token:
+        return jsonify({"message": "Token is missing!"}), 403
 
-#     try:
-#         payload = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
-#         return jsonify({"message": f"Hello, {payload['username']}!"}), 200
-#     except jwt.ExpiredSignatureError:
-#         return jsonify({"message": "Token has expired!"}), 403
-#     except jwt.InvalidTokenError:
-#         return jsonify({"message": "Invalid token!"}), 403
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
+        return jsonify({"message": f"Hello, {payload['username']}!"}), 200
+    except jwt.ExpiredSignatureError:
+        return jsonify({"message": "Token has expired!"}), 403
+    except jwt.InvalidTokenError:
+        return jsonify({"message": "Invalid token!"}), 403
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
 # Login process: After successful authentication, a JWT token is issued. The /protected endpoint checks if the user provides a valid token.
 # 3. Role-Based Access Control (RBAC) with Flask
 # Here’s an implementation of Role-Based Authorization using Flask.
 
 # python
 # Copy code
-# from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify
 
-# app = Flask(__name__)
+app = Flask(__name__)
 
-# # Dummy user data with roles
-# users_db = {
-#     "admin": {"password": "admin123", "role": "admin"},
-#     "user": {"password": "user123", "role": "user"}
-# }
+# Dummy user data with roles
+users_db = {
+    "admin": {"password": "admin123", "role": "admin"},
+    "user": {"password": "user123", "role": "user"}
+}
 
-# def check_role(required_role):
-#     def wrapper(func):
-#         def inner(*args, **kwargs):
-#             username = request.json.get('username')
-#             password = request.json.get('password')
+def check_role(required_role):
+    def wrapper(func):
+        def inner(*args, **kwargs):
+            username = request.json.get('username')
+            password = request.json.get('password')
 
-#             if username in users_db and users_db[username]["password"] == password:
-#                 if users_db[username]["role"] == required_role:
-#                     return func(*args, **kwargs)
-#                 else:
-#                     return jsonify({"message": "Access denied, insufficient permissions!"}), 403
-#             else:
-#                 return jsonify({"message": "Invalid credentials!"}), 401
-#         return inner
-#     return wrapper
+            if username in users_db and users_db[username]["password"] == password:
+                if users_db[username]["role"] == required_role:
+                    return func(*args, **kwargs)
+                else:
+                    return jsonify({"message": "Access denied, insufficient permissions!"}), 403
+            else:
+                return jsonify({"message": "Invalid credentials!"}), 401
+        return inner
+    return wrapper
 
-# @app.route('/admin', methods=['POST'])
-# @check_role('admin')
-# def admin():
-#     return jsonify({"message": "Welcome, Admin!"}), 200
+@app.route('/admin', methods=['POST'])
+@check_role('admin')
+def admin():
+    return jsonify({"message": "Welcome, Admin!"}), 200
 
-# @app.route('/user', methods=['POST'])
-# @check_role('user')
-# def user():
-#     return jsonify({"message": "Welcome, User!"}), 200
+@app.route('/user', methods=['POST'])
+@check_role('user')
+def user():
+    return jsonify({"message": "Welcome, User!"}), 200
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
 # RBAC Authorization: Users are assigned roles (admin, user). Only users with the appropriate role can access the protected routes.
 # 4. Multi-factor Authentication (MFA) with Flask
 # Implementing Multi-factor Authentication can involve sending a code (like an OTP) to the user’s phone or email.
 
 # python
 # Copy code
-# import random
-# import time
-# from flask import Flask, request, jsonify
+import random
+import time
+from flask import Flask, request, jsonify
 
-# app = Flask(__name__)
+app = Flask(__name__)
 
-# # Dummy user data
-# users_db = {
-#     "user1": {"password": "password123", "otp": None, "otp_expiry": None}
-# }
+# Dummy user data
+users_db = {
+    "user1": {"password": "password123", "otp": None, "otp_expiry": None}
+}
 
-# def send_otp():
-#     otp = random.randint(100000, 999999)
-#     return otp
+def send_otp():
+    otp = random.randint(100000, 999999)
+    return otp
 
-# @app.route('/login', methods=['POST'])
-# def login():
-#     username = request.json.get('username')
-#     password = request.json.get('password')
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.json.get('username')
+    password = request.json.get('password')
 
-#     if username in users_db and users_db[username]["password"] == password:
-#         otp = send_otp()
-#         users_db[username]["otp"] = otp
-#         users_db[username]["otp_expiry"] = time.time() + 300  # OTP expires in 5 minutes
-#         return jsonify({"message": "OTP sent to your phone", "otp": otp}), 200
-#     else:
-#         return jsonify({"message": "Invalid credentials!"}), 401
+    if username in users_db and users_db[username]["password"] == password:
+        otp = send_otp()
+        users_db[username]["otp"] = otp
+        users_db[username]["otp_expiry"] = time.time() + 300  # OTP expires in 5 minutes
+        return jsonify({"message": "OTP sent to your phone", "otp": otp}), 200
+    else:
+        return jsonify({"message": "Invalid credentials!"}), 401
 
-# @app.route('/verify_otp', methods=['POST'])
-# def verify_otp():
-#     username = request.json.get('username')
-#     otp = request.json.get('otp')
+@app.route('/verify_otp', methods=['POST'])
+def verify_otp():
+    username = request.json.get('username')
+    otp = request.json.get('otp')
 
-#     if username in users_db and users_db[username]["otp"] == otp:
-#         if time.time() > users_db[username]["otp_expiry"]:
-#             return jsonify({"message": "OTP expired!"}), 400
-#         return jsonify({"message": "Login successful!"}), 200
-#     else:
-#         return jsonify({"message": "Invalid OTP!"}), 401
+    if username in users_db and users_db[username]["otp"] == otp:
+        if time.time() > users_db[username]["otp_expiry"]:
+            return jsonify({"message": "OTP expired!"}), 400
+        return jsonify({"message": "Login successful!"}), 200
+    else:
+        return jsonify({"message": "Invalid OTP!"}), 401
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
 # MFA Implementation: First, the user logs in with their credentials. If correct, an OTP is sent (here simulated) and must be verified.
 # Summary
 # Authentication: Verifies the identity of a user. We implemented password-based, JWT, and multi-factor authentication.
@@ -983,40 +988,45 @@ async def fetch_records(
 # interview with reallife example.
 
 #Answer:
-# In Python, class methods, static methods, and abstract methods are all different types of methods that serve unique purposes within a class. Here’s an explanation of each with real-life examples:
+# In Python, class methods, static methods, and abstract methods are all different types of methods that 
+# serve unique purposes within a class. Here’s an explanation of each with real-life examples:
 
 # 1. Class Method
 # What it is:
-# A class method is a method that is bound to the class rather than the instance. It can modify the class state that applies across all instances of the class. Class methods take cls as the first parameter, which refers to the class itself.
+# A class method is a method that is bound to the class rather than the instance. It can modify the class 
+# state that applies across all instances of the class. Class methods take cls as the first parameter, which 
+# refers to the class itself.
 
 # Real-life Example:
-# Imagine a Bank class where you want to keep track of the total balance across all customers (class-level attribute). A class method can be used to calculate the total balance or perform operations affecting all customers.
+# Imagine a Bank class where you want to keep track of the total balance across all customers (class-level 
+# attribute). A class method can be used to calculate the total balance or perform operations affecting all 
+# customers.
 
 # Example Code:
-# python
-# Copy code
-# class Bank:
-#     total_balance = 0  # Class-level attribute
+
+class Bank:
+    total_balance = 0  # Class-level attribute
     
-#     def __init__(self, name, balance):
-#         self.name = name
-#         self.balance = balance
-#         Bank.total_balance += balance  # Update total balance
+    def __init__(self, name, balance):
+        self.name = name
+        self.balance = balance
+        Bank.total_balance += balance  # Update total balance
 
-#     @classmethod
-#     def show_total_balance(cls):
-#         print(f"Total balance across all customers: {cls.total_balance}")
+    @classmethod
+    def show_total_balance(cls):
+        print(f"Total balance across all customers: {cls.total_balance}")
 
-# # Creating instances of Bank
-# customer1 = Bank("Alice", 1000)
-# customer2 = Bank("Bob", 1500)
+# Creating instances of Bank
+customer1 = Bank("Alice", 1000)
+customer2 = Bank("Bob", 1500)
 
-# # Calling class method
-# Bank.show_total_balance()  # Output: Total balance across all customers: 2500
+# Calling class method
+Bank.show_total_balance()  # Output: Total balance across all customers: 2500
 # Key Points:
 # @classmethod decorator is used.
 # cls is used to refer to the class itself (not an instance).
 # Can be used to modify class-level attributes.
+
 # 2. Static Method
 # What it is:
 # A static method is a method that doesn't take a reference to the instance or class as its first parameter. It behaves like a regular function that belongs to a class, but it doesn't need to access or modify the class or instance data. Static methods are defined with the @staticmethod decorator.
@@ -1025,28 +1035,28 @@ async def fetch_records(
 # Consider a Calculator class. If you want to implement basic operations like addition, subtraction, multiplication, etc., they don't need access to the instance of the calculator, and they can be static methods because they operate independently of any object state.
 
 # Example Code:
-# python
-# Copy code
-# class Calculator:
+
+class Calculator:
     
-#     @staticmethod
-#     def add(a, b):
-#         return a + b
+    @staticmethod
+    def add(a, b):
+        return a + b
 
-#     @staticmethod
-#     def multiply(a, b):
-#         return a * b
+    @staticmethod
+    def multiply(a, b):
+        return a * b
 
-# # Calling static methods without creating an instance
-# result1 = Calculator.add(5, 3)  # Output: 8
-# result2 = Calculator.multiply(4, 6)  # Output: 24
+# Calling static methods without creating an instance
+result1 = Calculator.add(5, 3)  # Output: 8
+result2 = Calculator.multiply(4, 6)  # Output: 24
 
-# print(result1)
-# print(result2)
+print(result1)
+print(result2)
 # Key Points:
 # @staticmethod decorator is used.
 # No reference to self or cls is needed.
 # Works like a regular function, but logically grouped within the class.
+
 # 3. Abstract Method
 # What it is:
 # An abstract method is a method that is declared in an abstract class (a class that cannot be instantiated) and must be implemented by any subclass of that abstract class. Abstract methods define a blueprint for the subclasses, but the actual implementation is left to the subclasses.
@@ -1055,57 +1065,59 @@ async def fetch_records(
 # Think of an Employee class, where you have different types of employees, such as FullTimeEmployee and PartTimeEmployee. You can define an abstract method calculate_salary() in the Employee class, but the actual salary calculation will differ for full-time and part-time employees. Each subclass must implement this method.
 
 # Example Code:
-# python
-# Copy code
-# from abc import ABC, abstractmethod
 
-# # Abstract class
-# class Employee(ABC):
+from abc import ABC, abstractmethod
+
+# Abstract class
+class Employee(ABC):
     
-#     @abstractmethod
-#     def calculate_salary(self):
-#         pass
+    @abstractmethod
+    def calculate_salary(self):
+        pass
 
-# # Subclass for FullTimeEmployee
-# class FullTimeEmployee(Employee):
-#     def __init__(self, name, salary):
-#         self.name = name
-#         self.salary = salary
+# Subclass for FullTimeEmployee
+class FullTimeEmployee(Employee):
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
         
-#     def calculate_salary(self):
-#         return self.salary  # For full-time, just return salary
+    def calculate_salary(self):
+        return self.salary  # For full-time, just return salary
 
-# # Subclass for PartTimeEmployee
-# class PartTimeEmployee(Employee):
-#     def __init__(self, name, hourly_rate, hours_worked):
-#         self.name = name
-#         self.hourly_rate = hourly_rate
-#         self.hours_worked = hours_worked
+# Subclass for PartTimeEmployee
+class PartTimeEmployee(Employee):
+    def __init__(self, name, hourly_rate, hours_worked):
+        self.name = name
+        self.hourly_rate = hourly_rate
+        self.hours_worked = hours_worked
         
-#     def calculate_salary(self):
-#         return self.hourly_rate * self.hours_worked  # For part-time, calculate by hours worked
+    def calculate_salary(self):
+        return self.hourly_rate * self.hours_worked  # For part-time, calculate by hours worked
 
-# # Trying to create an instance of the abstract class (Employee) will raise an error
-# # emp = Employee("John")  # This will raise TypeError: Can't instantiate abstract class
+# Trying to create an instance of the abstract class (Employee) will raise an error
+# emp = Employee("John")  # This will raise TypeError: Can't instantiate abstract class
 
-# # Correct usage with subclasses
-# full_time_emp = FullTimeEmployee("Alice", 5000)
-# part_time_emp = PartTimeEmployee("Bob", 20, 80)
+# Correct usage with subclasses
+full_time_emp = FullTimeEmployee("Alice", 5000)
+part_time_emp = PartTimeEmployee("Bob", 20, 80)
 
-# print(f"Full-time salary: {full_time_emp.calculate_salary()}")
-# print(f"Part-time salary: {part_time_emp.calculate_salary()}")
+print(f"Full-time salary: {full_time_emp.calculate_salary()}")
+print(f"Part-time salary: {part_time_emp.calculate_salary()}")
 # Key Points:
 # @abstractmethod decorator is used to define abstract methods.
 # The abstract class cannot be instantiated directly.
 # Any subclass must provide an implementation for the abstract methods.
 # Summary:
-# Class Method (@classmethod): A method that operates on the class itself and can modify class-level attributes. It takes cls as the first argument.
-
+# Class Method (@classmethod): A method that operates on the class itself and can modify class-level 
+# attributes. It takes cls as the first argument.
 # Example: A method to track the total balance across all customers in a Bank class.
-# Static Method (@staticmethod): A method that doesn’t operate on class or instance-level attributes and doesn't require access to self or cls. It's like a regular function but belongs to the class.
 
+# Static Method (@staticmethod): A method that doesn’t operate on class or instance-level attributes and 
+# doesn't require access to self or cls. It's like a regular function but belongs to the class.
 # Example: Simple mathematical operations in a Calculator class.
-# Abstract Method (@abstractmethod): A method in an abstract class that must be implemented by any subclass. It is used when you have a general blueprint, but the specific implementation is left to the subclasses.
 
+# Abstract Method (@abstractmethod): A method in an abstract class that must be implemented by any subclass. 
+# It is used when you have a general blueprint, but the specific implementation is left to the subclasses.
 # Example: Calculating salaries for different types of employees in an Employee class.
-# In an interview, you might also be asked to show how to apply these methods in real-world scenarios, so be ready with examples like the ones above, where these concepts are applied in practical situations.
+# In an interview, you might also be asked to show how to apply these methods in real-world scenarios, so be 
+# ready with examples like the ones above, where these concepts are applied in practical situations.

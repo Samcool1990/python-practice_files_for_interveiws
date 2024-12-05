@@ -98,11 +98,11 @@ print(donutStoreDataSet)
 # What is dependency injection
 
 '''
-Dependency injection is a design pattern used in software development to achieve inversion of control and 
+Dependency inversion is a design pattern used in software development to achieve inversion of control and 
 promote decoupling between different components or modules of a system. It's a technique that helps manage 
 the dependencies between various parts of an application.
 
-In the context of your work as a Backend Engineer in the IT industry, understanding dependency injection
+In the context of your work as a Backend Engineer in the IT industry, understanding dependency inversion
 can be crucial for writing maintainable and testable code.
 
 Here's a simplified explanation:

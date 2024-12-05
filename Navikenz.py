@@ -4,7 +4,8 @@
 # SOLID principles in Python
 # Noramlization in SQL
 # type of noramlization in sql & explain all
-# How do you combine 2 different dictionaries where if any dictionary key mathes then both values will be added
+# How do you combine 2 different dictionaries where if any dictionary key matches then both values will be 
+# added
 # together. Sample dictionaries
 dict1 = {"a": 10, "b": 20, "c": 30}
 dict2 = {"b": 5, "c": 15, "d": 25}

@@ -82,7 +82,9 @@ singleton2 = Singleton()
 print(singleton1 is singleton2)  # Output: True
 
 # Question: how would you maintain meta for a class
-# Answer: Maintaining metadata for a class in Python involves storing additional information about the class itself. This metadata can describe properties, behaviors, relationships, or other descriptive details relevant to the class or its instances.
+# Answer: Maintaining metadata for a class in Python involves storing additional information about the class 
+# itself. This metadata can describe properties, behaviors, relationships, or other descriptive details 
+# relevant to the class or its instances.
 
 # Here are some approaches to maintain metadata for a class:
 
@@ -90,129 +92,130 @@ print(singleton1 is singleton2)  # Output: True
 # Class-level attributes can store metadata. These attributes are shared among all instances unless overridden.
 
 # python
-# Copy code
-# class MyClass:
-#     metadata = {
-#         "description": "This is a sample class",
-#         "author": "John Doe",
-#         "version": "1.0",
-#     }
+
+class MyClass:
+    metadata = {
+        "description": "This is a sample class",
+        "author": "John Doe",
+        "version": "1.0",
+    }
 
 
 # # Accessing Metadata
-# print(MyClass.metadata["description"])  # Output: This is a sample class
-# print(MyClass.metadata["author"])       # Output: John Doe
+print(MyClass.metadata["description"])  # Output: This is a sample class
+print(MyClass.metadata["author"])       # Output: John Doe
 # 2. Using a Decorator to Attach Metadata
 # A custom decorator can attach metadata dynamically to a class.
 
 # python
 # Copy code
-# def add_metadata(description, author, version):
-#     def decorator(cls):
-#         cls.metadata = {
-#             "description": description,
-#             "author": author,
-#             "version": version,
-#         }
-#         return cls
-#     return decorator
+def add_metadata(description, author, version):
+    def decorator(cls):
+        cls.metadata = {
+            "description": description,
+            "author": author,
+            "version": version,
+        }
+        return cls
+    return decorator
 
 
-# @add_metadata(description="Sample class", author="John Doe", version="1.0")
-# class MyClass:
-#     pass
+@add_metadata(description="Sample class", author="John Doe", version="1.0")
+class MyClass:
+    pass
 
 
 # # Accessing Metadata
-# print(MyClass.metadata["description"])  # Output: Sample class
+print(MyClass.metadata["description"])  # Output: Sample class
 # 3. Using a Metaclass
 # Metaclasses provide a robust way to define and manipulate metadata at the class creation level.
 
 # python
 # Copy code
-# class MetaClass(type):
-#     def __new__(cls, name, bases, dct):
-#         dct["metadata"] = {
-#             "description": f"{name} class with metadata",
-#             "author": "John Doe",
-#             "version": "1.0",
-#         }
-#         return super().__new__(cls, name, bases, dct)
+class MetaClass(type):
+    def __new__(cls, name, bases, dct):
+        dct["metadata"] = {
+            "description": f"{name} class with metadata",
+            "author": "John Doe",
+            "version": "1.0",
+        }
+        return super().__new__(cls, name, bases, dct)
 
 
-# class MyClass(metaclass=MetaClass):
-#     pass
+class MyClass(metaclass=MetaClass):
+    pass
 
 
 # # Accessing Metadata
-# print(MyClass.metadata["description"])  # Output: MyClass class with metadata
+print(MyClass.metadata["description"])  # Output: MyClass class with metadata
 # 4. Using Python’s __annotations__ for Typed Metadata
 # The __annotations__ attribute can store metadata in a structured, typed way.
 
 # python
 # Copy code
-# class MyClass:
-#     description: str = "This is a sample class"
-#     author: str = "John Doe"
-#     version: str = "1.0"
+class MyClass:
+    description: str = "This is a sample class"
+    author: str = "John Doe"
+    version: str = "1.0"
 
 
 # # Accessing Metadata
-# print(MyClass.__annotations__)
+print(MyClass.__annotations__)
 # # Output: {'description': <class 'str'>, 'author': <class 'str'>, 'version': <class 'str'>}
 # 5. Using __dict__ for Instance-Level Metadata
 # You can store metadata directly in the class or instance dictionary.
 
 # python
 # Copy code
-# class MyClass:
-#     def __init__(self):
-#         self.__dict__["_metadata"] = {
-#             "description": "This is an instance with metadata",
-#             "author": "John Doe",
-#             "version": "1.0",
-#         }
+class MyClass:
+    def __init__(self):
+        self.__dict__["_metadata"] = {
+            "description": "This is an instance with metadata",
+            "author": "John Doe",
+            "version": "1.0",
+        }
 
 
 # # Accessing Metadata
-# instance = MyClass()
-# print(instance._metadata["description"])  # Output: This is an instance with metadata
+instance = MyClass()
+print(instance._metadata["description"])  # Output: This is an instance with metadata
 # 6. Using dataclasses for Structured Metadata
 # The dataclasses module allows for structured metadata using the field function.
 
 # python
 # Copy code
-# from dataclasses import dataclass, field
+from dataclasses import dataclass, field
 
-# @dataclass
-# class MyClass:
-#     description: str = field(default="This is a sample class", metadata={"info": "description metadata"})
-#     author: str = field(default="John Doe", metadata={"info": "author metadata"})
-#     version: str = field(default="1.0", metadata={"info": "version metadata"})
+@dataclass
+class MyClass:
+    description: str = field(default="This is a sample class", metadata={"info": "description metadata"})
+    author: str = field(default="John Doe", metadata={"info": "author metadata"})
+    version: str = field(default="1.0", metadata={"info": "version metadata"})
 
 
 # # Accessing Metadata
-# print(MyClass.__dataclass_fields__["description"].metadata)
+print(MyClass.__dataclass_fields__["description"].metadata)
 # # Output: {'info': 'description metadata'}
 # 7. Using __slots__ for Metadata Optimization
 # For classes with fixed metadata, __slots__ can optimize memory usage by predefining attributes.
 
 # python
 # Copy code
-# class MyClass:
-#     __slots__ = ["metadata"]
+class MyClass:
+    __slots__ = ["metadata"]
 
-#     def __init__(self):
-#         self.metadata = {
-#             "description": "This is a sample class",
-#             "author": "John Doe",
-#             "version": "1.0",
-#         }
+    def __init__(self):
+        self.metadata = {
+            "description": "This is a sample class",
+            "author": "John Doe",
+            "version": "1.0",
+        }
 
 
 # # Accessing Metadata
-# instance = MyClass()
-# print(instance.metadata["author"])  # Output: John Doe
+instance = MyClass()
+print(instance.metadata["author"])  # Output: John Doe
+
 # Best Practices for Class Metadata
 # Choose Simplicity: For simple metadata, class attributes or decorators suffice.
 # Use Metaclasses for Complexity: Use metaclasses for dynamic, reusable metadata across multiple classes.
@@ -226,13 +229,16 @@ print(singleton1 is singleton2)  # Output: True
 # Here are the approaches you can use:
 
 # 1. Design for the Type of Consistency
-# Microservices typically face a trade-off between consistency and availability due to the CAP theorem. Choose the appropriate consistency model based on your business requirements:
+# Microservices typically face a trade-off between consistency and availability due to the CAP theorem. 
+# Choose the appropriate consistency model based on your business requirements:
 
 # Strong Consistency: All microservices see the same data at the same time.
-# Eventual Consistency: Different microservices may temporarily have different data views but eventually converge to a consistent state.
+# Eventual Consistency: Different microservices may temporarily have different data views but eventually 
+# converge to a consistent state.
 # 2. Use a Distributed Transaction Management Approach
 # a. Two-Phase Commit (2PC)
-# A traditional approach where a coordinator ensures all microservices agree on committing or rolling back a transaction.
+# A traditional approach where a coordinator ensures all microservices agree on committing or rolling back a 
+# transaction.
 
 # Pros: Strong consistency.
 # Cons: High latency, reduced fault tolerance, and complexity in distributed environments.
@@ -243,7 +249,8 @@ print(singleton1 is singleton2)  # Output: True
 # Step 1: Prepare phase (all microservices agree to commit).
 # Step 2: Commit phase (coordinator finalizes the transaction).
 # b. SAGA Pattern
-# A more modern alternative where a transaction is split into smaller steps, each handled by a different microservice, with compensating transactions for rollbacks.
+# A more modern alternative where a transaction is split into smaller steps, each handled by a different 
+# microservice, with compensating transactions for rollbacks.
 
 # Pros: Works well in distributed environments, eventual consistency.
 # Cons: Complex to implement; requires explicit handling of failure scenarios.
@@ -259,7 +266,8 @@ print(singleton1 is singleton2)  # Output: True
 # # Compensate on failure
 # 3. Event-Driven Architecture
 # a. Event Sourcing
-# Instead of directly updating data, record all state changes as events in an event log. Microservices replay events to build their state.
+# Instead of directly updating data, record all state changes as events in an event log. Microservices 
+# replay events to build their state.
 
 # Pros: Historical audit, eventual consistency.
 # Cons: Complex querying, requires event storage.
@@ -481,7 +489,8 @@ for book in books_with_authors:
 # By using these AWS services effectively, you can scale microservices to handle varying loads while maintaining performance, availability, and resilience.
 
 # Question: how would you maintain s3 file consistency
-# Answer: S3's strong consistency is automatic and doesn't cost extra, impact performance, or affect availability.
+# Answer: S3's strong consistency is automatic and doesn't cost extra, impact performance, or affect 
+# availability.
 
 
 # network load balancer & application load balancer and AWS load balancer
