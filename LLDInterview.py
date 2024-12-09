@@ -14,7 +14,7 @@
 # Explain and write code to implement  Eager loading vs lazy loading.
 
 # Explain and write code to implement  Cascading and Types.
-# Explain and write code to implement  pagination 
+# Explain and write code to implement  paginationx 
 
 # You are required to fetch a list of products from a third party API using RestTemplate in a spring boot 
 # application once the products are retrieved, you need to store them in your local database . 
