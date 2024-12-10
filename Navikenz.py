@@ -138,6 +138,9 @@ print(combined_dict)
 # Draw the django architecture.
 # Draw how viewes render template & model to render page
 # numpy vs list for arithmetic operations
+
+
+
 # Question: In AWS how many type of load balancer
 # Answer: Amazon Web Services (AWS) offers four types of load balancers:
 # Application Load Balancer (ALB)
