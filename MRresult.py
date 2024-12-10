@@ -277,34 +277,48 @@ async def fetch_records(
 # Commit migration files (alembic/versions/) to your repository to maintain a record of schema changes.
 # With Alembic integrated into your FastAPI project, you'll have a robust way to manage database schema changes efficiently.
 
+
+
+
+
+
+
+
+
 # Question: draw back of indexes in database table ?
 # Answer:
 # Indexes in a database table are essential for improving query performance, but they come with certain 
 # drawbacks. Here are the key disadvantages:
 
 # 1. Increased Storage Space
-# Drawback: Indexes consume additional disk space because the database must store the index data alongside the table data.
-# Impact: For large datasets with many indexes, this can significantly increase storage requirements.
+# Drawback: Indexes consume additional disk space because the database must store the index data alongside the 
+# table data. Impact: For large datasets with many indexes, this can significantly increase storage 
+# requirements.
+
 # 2. Slower Write Operations
 # Drawback: Operations like INSERT, UPDATE, and DELETE take longer because the database must update the indexes every time the data changes.
 # Impact:
 # In high write-intensive applications, excessive indexing can degrade performance.
 # The more indexes a table has, the greater the overhead for maintaining them.
+
 # 3. Maintenance Overhead
 # Drawback: Indexes require regular maintenance to stay effective, especially for dynamic tables with frequent updates.
 # Impact:
 # Fragmentation: Indexes can become fragmented over time, leading to performance degradation.
 # Rebuilding or reorganizing indexes is resource-intensive.
+
 # 4. Overhead During Query Execution
 # Drawback: Not all queries benefit from indexes. For small tables or queries that return a large portion of the data, using an index can be slower than a full table scan.
 # Impact:
 # Misused or unnecessary indexes can lead to query plan inefficiencies.
 # Queries that involve complex conditions may not leverage existing indexes effectively.
+
 # 5. Risk of Incorrect Index Usage
 # Drawback: If the database query planner chooses a suboptimal index or the query doesn’t match the index structure, performance can degrade.
 # Impact:
 # Requires careful monitoring and fine-tuning of indexes.
 # Multi-column indexes must align with the query’s column order for optimal performance.
+
 # 6. Complexity in Index Management
 # Drawback: Managing indexes in large systems can become complex, especially with:
 # Composite indexes (multi-column).
@@ -312,20 +326,24 @@ async def fetch_records(
 # Impact:
 # Mismanagement can lead to redundant or unused indexes.
 # Developers and DBAs need to regularly evaluate index usage.
+
 # 7. Potential Locking Issues
 # Drawback: Index updates can cause locking conflicts in concurrent environments.
 # Impact:
 # Increases the likelihood of deadlocks or lock contention during high concurrency.
+
 # 8. Overhead During Bulk Operations
 # Drawback: Bulk data operations (e.g., mass inserts or updates) are slower when indexes are present.
 # Impact:
 # Indexes must be updated for every inserted or modified row, significantly slowing down the process.
+
 # 9. Limitations in Certain Scenarios
 # Drawback: Indexes are less effective for:
 # Queries with high cardinality (returning many rows).
 # Columns with frequently changing values.
 # Columns with low cardinality (e.g., boolean or enum types).
 # Impact: The performance boost may not justify the overhead.
+
 # 10. Cost of Creation and Initialization
 # Drawback: Creating an index on a large table can be time-consuming and resource-intensive.
 # Impact:
@@ -347,6 +365,8 @@ async def fetch_records(
 # Create indexes after bulk inserts to avoid unnecessary overhead during the operation.
 # Indexes are powerful but must be used judiciously to balance the trade-offs between read and write performance.
 
+
+
 # Question: create a decorator where you pass argument in the decorator ? In depth concept of advance
 # decorator. create advance level decorator.
 # Answer:
@@ -360,31 +380,32 @@ async def fetch_records(
 
 # A function that takes another function as input and returns a new function.
 # python
-# Copy code
-# def simple_decorator(func):
-#     def wrapper():
-#         print("Before the function call")
-#         func()
-#         print("After the function call")
-#     return wrapper
-# Decorators with Arguments:
+#
+def simple_decorator(func):
+    def wrapper():
+        print("Before the function call")
+        func()
+        print("After the function call")
+    return wrapper
 
+# Decorators with Arguments:
 # To pass arguments to a decorator, you add an additional layer of functions:
 # python
-# Copy code
-# def decorator_with_args(arg):
-#     def decorator(func):
-#         def wrapper(*args, **kwargs):
-#             print(f"Decorator argument: {arg}")
-#             return func(*args, **kwargs)
-#         return wrapper
-#     return decorator
-# Preserving Metadata:
+# 
+def decorator_with_args(arg):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            print(f"Decorator argument: {arg}")
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
 
+
+# Preserving Metadata:
 # Use functools.wraps to preserve the original function's metadata.
 # python
-# Copy code
-# from functools import wraps
+# 
+from functools import wraps
 # Chaining Decorators:
 
 # Multiple decorators can be applied to a function.
@@ -397,32 +418,32 @@ async def fetch_records(
 # Logs execution time of the function.
 # Code Example: Advanced Decorator
 # python
-# Copy code
-# import time
-# from functools import wraps
+# 
+import time
+from functools import wraps
 
-# def log_execution_time(log_prefix="Execution Time"):
-#     """Advanced decorator to log execution time of a function."""
-#     def decorator(func):
-#         @wraps(func)
-#         def wrapper(*args, **kwargs):
-#             print(f"{log_prefix}: Starting execution of '{func.__name__}'")
-#             start_time = time.time()
-#             result = func(*args, **kwargs)
-#             end_time = time.time()
-#             print(f"{log_prefix}: '{func.__name__}' executed in {end_time - start_time:.4f} seconds")
-#             return result
-#         return wrapper
-#     return decorator
+def log_execution_time(log_prefix="Execution Time"):
+    """Advanced decorator to log execution time of a function."""
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            print(f"{log_prefix}: Starting execution of '{func.__name__}'")
+            start_time = time.time()
+            result = func(*args, **kwargs)
+            end_time = time.time()
+            print(f"{log_prefix}: '{func.__name__}' executed in {end_time - start_time:.4f} seconds")
+            return result
+        return wrapper
+    return decorator
 
-# # Applying the decorator with arguments
-# @log_execution_time(log_prefix="DEBUG")
-# def calculate_sum(n):
-#     """Calculate the sum of the first 'n' integers."""
-#     return sum(range(1, n + 1))
+# Applying the decorator with arguments
+@log_execution_time(log_prefix="DEBUG")
+def calculate_sum(n):
+    """Calculate the sum of the first 'n' integers."""
+    return sum(range(1, n + 1))
 
-# # Testing the function
-# print(calculate_sum(1000000))
+# Testing the function
+print(calculate_sum(1000000))
 # Explanation
 # log_execution_time(log_prefix="Execution Time"):
 
@@ -442,42 +463,42 @@ async def fetch_records(
 
 # Code Example: Class-Based Decorator
 # python
-# Copy code
-# class CountCalls:
-#     """A decorator class to count the number of times a function is called."""
-#     def __init__(self, func):
-#         self.func = func
-#         self.call_count = 0
+# 
+class CountCalls:
+    """A decorator class to count the number of times a function is called."""
+    def __init__(self, func):
+        self.func = func
+        self.call_count = 0
 
-#     def __call__(self, *args, **kwargs):
-#         self.call_count += 1
-#         print(f"Call {self.call_count} to '{self.func.__name__}'")
-#         return self.func(*args, **kwargs)
+    def __call__(self, *args, **kwargs):
+        self.call_count += 1
+        print(f"Call {self.call_count} to '{self.func.__name__}'")
+        return self.func(*args, **kwargs)
 
-# # Applying the class-based decorator
-# @CountCalls
-# def greet(name):
-#     """Greets the user."""
-#     print(f"Hello, {name}!")
+# Applying the class-based decorator
+@CountCalls
+def greet(name):
+    """Greets the user."""
+    print(f"Hello, {name}!")
 
-# # Testing the function
-# greet("Alice")
-# greet("Bob")
+# Testing the function
+greet("Alice")
+greet("Bob")
 # Chaining Multiple Advanced Decorators
 # Decorators can be chained to combine functionality. The order matters because the decorators wrap functions in the order they are applied.
 
 # python
-# Copy code
-# @log_execution_time("PERFORMANCE")
-# @CountCalls
-# def factorial(n):
-#     """Calculate factorial of 'n'."""
-#     if n == 0:
-#         return 1
-#     return n * factorial(n - 1)
+# 
+@log_execution_time("PERFORMANCE")
+@CountCalls
+def factorial(n):
+    """Calculate factorial of 'n'."""
+    if n == 0:
+        return 1
+    return n * factorial(n - 1)
 
-# # Testing the chained decorators
-# print(factorial(5))
+# Testing the chained decorators
+print(factorial(5))
 # Summary
 # Advanced decorators:
 
