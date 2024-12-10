@@ -6,9 +6,9 @@ for i in list1:
         new_lst.append(i)
 print(new_lst)
 
-new_lst3 = []
-new_lst2 = [new_lst3.append(i) for i in list1 if i not in new_lst3]
-print(">>>>>>", new_lst3)
+# new_lst3 = []
+# new_lst2 = [new_lst3.append(i) for i in list1 if i not in new_lst3]
+# print(">>>>>>", new_lst3)
 d = {}
 
 for i in list1:
