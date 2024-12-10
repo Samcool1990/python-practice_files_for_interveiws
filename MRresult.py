@@ -512,6 +512,82 @@ print(factorial(5))
 
 # Question: Type of arguments in python & explain everything
 # Answer:
+# In Python, function arguments can be categorized into five types, based on how they are passed and used:
+
+# 1. Positional Arguments
+# The most common type of argument.
+# Passed in the order they are defined in the function.
+# Example:
+def greet(name, age):
+    print(f"Hello, {name}! You are {age} years old.")
+
+greet("Alice", 30)  # Output: Hello, Alice! You are 30 years old.
+
+
+# 2. Keyword Arguments
+# Arguments are passed by explicitly naming the parameter.
+# Order does not matter when using keyword arguments.
+# Example:
+def greet(name, age):
+    print(f"Hello, {name}! You are {age} years old.")
+
+greet(age=30, name="Alice")  # Output: Hello, Alice! You are 30 years old.
+
+
+# 3. Default Arguments
+# Parameters that have default values if no value is passed.
+# Must be declared after non-default arguments.
+# Example:
+
+def greet(name, age=25):
+    print(f"Hello, {name}! You are {age} years old.")
+
+greet("Alice")        # Output: Hello, Alice! You are 25 years old.
+greet("Bob", 30)      # Output: Hello, Bob! You are 30 years old.
+
+
+# 4. Variable-length Arguments
+# Allows functions to accept arbitrary numbers of arguments.
+# (a) *args: Non-keyword variable-length arguments.
+# Collects extra positional arguments as a tuple.
+# Example
+def add_numbers(*args):
+    print(sum(args))
+
+add_numbers(1, 2, 3)   # Output: 6
+add_numbers(4, 5)      # Output: 9
+# (b) **kwargs: Keyword variable-length arguments.
+# Collects extra keyword arguments as a dictionary.
+# Example
+def display_info(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+display_info(name="Alice", age=30)  
+# Output:
+# name: Alice
+# age: 30
+
+
+# 5. Positional-only and Keyword-only Arguments
+# Introduced in Python 3.8 with the use of / and *.
+# (a) Positional-only Arguments (/):
+# Arguments before / must be positional.
+# Example:
+def add(a, b, /, c):
+    return a + b + c
+
+print(add(1, 2, 3))   # Output: 6
+# add(a=1, b=2, c=3)  # Raises TypeError
+# (b) Keyword-only Arguments (*):
+# Arguments after * must be passed as keywords.
+# Example:
+def greet(*, name, age):
+    print(f"Hello, {name}! You are {age} years old.")
+
+greet(name="Alice", age=30)  # Output: Hello, Alice! You are 30 years old.
+# greet("Alice", 30)         # Raises TypeError
+
 
 
 # Question: query to partition in sql & first 3 letter of name in sql
