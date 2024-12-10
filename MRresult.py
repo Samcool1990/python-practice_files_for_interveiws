@@ -814,20 +814,20 @@ greet(name="Alice", age=30)  # Output: Hello, Alice! You are 30 years old.
 # python
 # Copy code
 # # Global object
-# global_obj = "I am a global object"
+global_obj = "I am a global object"
 
-# class MyClass:
-#     def __init__(self):
-#         # Accessing the global object in the constructor (without 'self')
-#         print(global_obj)
+class MyClass:
+    def __init__(self):
+        # Accessing the global object in the constructor (without 'self')
+        print(global_obj)
 
-#     def some_method(self):
-#         # Accessing the global object in another method (without 'self')
-#         print(global_obj)
+    def some_method(self):
+        # Accessing the global object in another method (without 'self')
+        print(global_obj)
 
 # # Create an instance of the class
-# obj = MyClass()  # This will print the global object
-# obj.some_method()  # This will print the global object again
+obj = MyClass()  # This will print the global object
+obj.some_method()  # This will print the global object again
 # Key Points:
 # Global object access: You access a global object directly by its name (e.g., global_obj), without needing 
 # to use self. Self keyword: The self keyword is used for accessing instance variables or methods, but it is
@@ -838,19 +838,19 @@ greet(name="Alice", age=30)  # Output: Hello, Alice! You are 30 years old.
 # Example of modifying the global object:
 # python
 # Copy code
-# global_obj = "Initial value"
+global_obj = "Initial value"
 
-# class MyClass:
-#     def __init__(self):
-#         global global_obj  # Declare that we are referring to the global variable
-#         global_obj = "Modified by class"
+class MyClass:
+    def __init__(self):
+        global global_obj  # Declare that we are referring to the global variable
+        global_obj = "Modified by class"
         
-#     def print_global(self):
-#         print(global_obj)
+    def print_global(self):
+        print(global_obj)
 
 # # Create an instance
-# obj = MyClass()
-# obj.print_global()  # This will print "Modified by class"
+obj = MyClass()
+obj.print_global()  # This will print "Modified by class"
 # In this case, the global keyword is needed to modify the global object from inside the method.
 
 # To summarize:
