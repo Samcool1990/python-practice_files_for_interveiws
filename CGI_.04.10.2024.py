@@ -220,11 +220,18 @@ print(instance.metadata["author"])  # Output: John Doe
 # Choose Simplicity: For simple metadata, class attributes or decorators suffice.
 # Use Metaclasses for Complexity: Use metaclasses for dynamic, reusable metadata across multiple classes.
 # Consider Type Safety: Use annotations or dataclasses for type safety.
-# Keep Metadata Separate: Avoid mixing business logic with metadata to maintain clarity and separation of concerns.
+# Keep Metadata Separate: Avoid mixing business logic with metadata to maintain clarity and separation of 
+# concerns.
+
+
+
+
 
 # Question: how would you maintain data consistency over different microservices
 # Answer:
-# Maintaining data consistency across different microservices is a critical challenge in distributed systems. Since microservices are designed to be loosely coupled and operate independently, ensuring consistency requires well-thought-out strategies and tools.
+# Maintaining data consistency across different microservices is a critical challenge in distributed systems. 
+# Since microservices are designed to be loosely coupled and operate independently, ensuring consistency 
+# requires well-thought-out strategies and tools.
 
 # Here are the approaches you can use:
 
@@ -235,6 +242,8 @@ print(instance.metadata["author"])  # Output: John Doe
 # Strong Consistency: All microservices see the same data at the same time.
 # Eventual Consistency: Different microservices may temporarily have different data views but eventually 
 # converge to a consistent state.
+
+
 # 2. Use a Distributed Transaction Management Approach
 # a. Two-Phase Commit (2PC)
 # A traditional approach where a coordinator ensures all microservices agree on committing or rolling back a 
@@ -248,6 +257,8 @@ print(instance.metadata["author"])  # Output: John Doe
 # Copy code
 # Step 1: Prepare phase (all microservices agree to commit).
 # Step 2: Commit phase (coordinator finalizes the transaction).
+
+
 # b. SAGA Pattern
 # A more modern alternative where a transaction is split into smaller steps, each handled by a different 
 # microservice, with compensating transactions for rollbacks.
@@ -362,6 +373,9 @@ for book in books_with_authors:
 
 
 # django signals
+
+
+
 
 # Question: how would you scale microservices in AWS
 # Answer:
