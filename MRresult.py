@@ -659,6 +659,9 @@ greet(name="Alice", age=30)  # Output: Hello, Alice! You are 30 years old.
 # Use SUBSTRING or LEFT for extracting parts of strings depending on your database.
 # Let me know if you need further assistance!
 
+
+
+
 # Question: Have you worked in any kind of scheduler in AWS ??
 # Answer:
 # Yes, I can guide you on implementing and using schedulers in AWS. Scheduling in AWS is typically
@@ -667,11 +670,9 @@ greet(name="Alice", age=30)  # Output: Hello, Alice! You are 30 years old.
 
 # 1. AWS EventBridge (formerly CloudWatch Events)
 # What it is:
-
 # A serverless event bus that allows you to schedule tasks or trigger events based on time or other
 # criteria.Supports cron expressions or rate-based scheduling.
 # Use Cases:
-
 # Run Lambda functions or start EC2/RDS instances on a schedule.
 # Trigger pipelines or batch jobs at specific intervals.
 # How to Use:
@@ -683,7 +684,6 @@ greet(name="Alice", age=30)  # Output: Hello, Alice! You are 30 years old.
 # Choose the service to trigger (e.g., Lambda, Step Functions, SNS, SQS).
 # Deploy.
 # Example: Trigger a Lambda Function Every Hour
-
 # json
 # Copy code
 # {
@@ -696,21 +696,19 @@ greet(name="Alice", age=30)  # Output: Hello, Alice! You are 30 years old.
 #         }
 #     ]
 # }
+
+
 # 2. AWS Lambda Scheduled Functions
 # What it is:
-
 # Lambda functions triggered by an EventBridge schedule.
 # No infrastructure management is required.
 # Use Cases:
-
 # Clean up resources like S3 buckets or DynamoDB tables.
 # Perform periodic health checks or data aggregation tasks.
 # How to Use:
-
 # Create a rule in EventBridge and set Lambda as the target.
 # Write your business logic in the Lambda function.
 # Example:
-
 # python
 # Copy code
 # import boto3
@@ -718,73 +716,71 @@ greet(name="Alice", age=30)  # Output: Hello, Alice! You are 30 years old.
 # def lambda_handler(event, context):
 #     print("Scheduled Lambda executed!")
 #     # Add your logic here
+
+
+
 # 3. AWS Batch
 # What it is:
-
 # A service to run batch jobs at scale, with scheduling capabilities through EventBridge.
 # Use Cases:
-
 # Run data processing or machine learning jobs periodically.
 # How to Use:
-
 # Define a compute environment and job queue.
 # Use EventBridge to submit jobs at specified times.
 # Specify job parameters and environment variables.
+
+
 # 4. AWS Step Functions
 # What it is:
-
 # A serverless orchestration service that can schedule tasks as part of state machine workflows.
 # Use Cases:
-
 # Schedule long-running workflows.
 # Coordinate multiple Lambda functions or services.
 # How to Use:
-
 # Use an EventBridge rule to start the Step Functions state machine on a schedule.
+
+
 # 5. Amazon RDS Maintenance Windows
 # What it is:
-
 # Scheduling for database maintenance tasks like backups or updates.
 # Use Cases:
-
 # Perform maintenance during off-peak hours.
 # How to Use:
-
 # Configure the maintenance window during database setup or via the AWS Management Console.
+
+
 # 6. AWS Glue Workflows
 # What it is:
-
 # Used for ETL (Extract, Transform, Load) processes with scheduling capabilities.
 # Use Cases:
-
 # Schedule data pipeline workflows.
 # How to Use:
-
 # Define an AWS Glue workflow and trigger it with an EventBridge rule.
+
+
 # 7. Custom EC2 Cron Jobs
 # What it is:
-
 # Use cron jobs in an EC2 instance for highly custom or specialized scheduling needs.
 # Use Cases:
-
 # Schedule tasks that cannot be easily handled by serverless solutions.
 # How to Use:
-
 # Install a cron scheduler (e.g., crontab) on the instance and define the tasks.
 # Example crontab entry:
 # bash
 # Copy code
 # 0 0 * * * /usr/bin/python3 /path/to/script.py
+
+
 # 8. AWS CodePipeline
 # What it is:
-
 # A CI/CD service with scheduling capabilities.
 # Use Cases:
-
 # Schedule builds, tests, or deployments.
 # How to Use:
-
 # Use EventBridge to trigger a pipeline execution.
+
+
+
 # Comparison of AWS Scheduling Services
 # Service	Use Case	Cost	Scalability	Ease of Use
 # EventBridge	General-purpose scheduling	Low	High	High
