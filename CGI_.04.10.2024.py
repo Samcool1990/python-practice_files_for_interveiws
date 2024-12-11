@@ -27,7 +27,7 @@ class Singleton:
 singleton1 = Singleton()
 singleton2 = Singleton()
 
-print(singleton1 is singleton2)  # Output: True
+print('>>>>>>>>>>',singleton1 is singleton2)  # Output: True
 # 2. Using a Decorator
 # You can create a decorator to transform any class into a singleton.
 
@@ -379,7 +379,8 @@ for book in books_with_authors:
 
 # Question: how would you scale microservices in AWS
 # Answer:
-# Scaling microservices in AWS involves using AWS services and best practices to ensure each microservice can scale independently based on demand.
+# Scaling microservices in AWS involves using AWS services and best practices to ensure each microservice can 
+# scale independently based on demand.
 # Here's a step-by-step guide to scaling microservices in AWS:
 
 # 1. Use Auto Scaling with Elastic Compute Cloud (EC2) or AWS Fargate
