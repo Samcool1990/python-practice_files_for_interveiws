@@ -98,51 +98,38 @@ print(donutStoreDataSet)
 # What is dependency injection
 
 '''
-Dependency inversion is a design pattern used in software development to achieve inversion of control and 
-promote decoupling between different components or modules of a system. It's a technique that helps manage 
-the dependencies between various parts of an application.
+Dependency Injection(DI) is a software engineering technique for defining the dependencies among objects. 
+Basically, the process of supplying a resource that a given piece of code requires. The required resource is 
+called dependency.There are various classes and objects defined when writing code. Most of the time, these 
+classes depend on other classes in order to fulfill their intended purpose. These classes, or better-used word 
+Components, knows the resources it needs and how to get them. DI handles defining these dependent resources 
+and provides ways to instantiate or create them externally. Dependency Container is used to implement this 
+behavior and holds the map of dependencies for the components. If object A depends on object B, object A must
+not create import object B directly. Instead of this, object A must provide a way for injecting object B. The
+ responsibility of object creation and dependency injection are delegated to external code.'''
+# email_client.py:
+class EmailClient(object):
+    
+    def __init__(self, config):
+        self._config = config
+        self.connect(self._config)
+        
+    def connect(self, config):
+        # Implement function here
+        pass
 
-In the context of your work as a Backend Engineer in the IT industry, understanding dependency inversion
-can be crucial for writing maintainable and testable code.
-
-Here's a simplified explanation:
-
-Dependencies:
-In software development, a "dependency" refers to an object or service that another part of the code 
-relies on in order to function.
-
-Injection:
-"Injection" refers to the process of providing these dependencies to a component, rather than the 
-component creating or managing them itself.
-
-There are a few key benefits to using dependency injection:
-
-Testability:
-By injecting dependencies, you can easily replace real dependencies with mock or stub objects during 
-testing. This allows you to isolate and test individual components in isolation.
-
-Flexibility:
-It allows for more flexible and modular code. You can swap out dependencies without making significant 
-changes to the components using them.
-
-Decoupling:
-Components are not tightly coupled to specific implementations of their dependencies. This makes your 
-code more maintainable and easier to refactor.
-
-Inversion of Control (IoC):
-With dependency injection, the control of how dependencies are created and provided is inverted. Instead 
-of a component creating its dependencies, they are provided from the outside.
-
-For example, in a web application, a database connection object could be a dependency for a service that 
-interacts with the database. With dependency injection, this connection object is provided to the service, rather than the service creating it directly.
-
-Different programming languages and frameworks have their own ways of implementing dependency injection, 
-so the specific syntax and techniques can vary. If you're working with a specific language or framework, 
-it's a good idea to look up the documentation or resources related to dependency injection for that 
-particular technology.'''
-
-
-
+# email_reader.py:
+class EmailReader(object):
+    
+    def __init__(self, client):
+        try:
+            self._client = client
+        except Exception as e:
+            raise e
+            
+    def read(self):
+        # Implement function here
+        pass
 
 
 
