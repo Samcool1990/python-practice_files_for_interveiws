@@ -62,7 +62,7 @@ Output = [325]  # sumaation of 107,121,97
 
 A = [35, 42, 35, 97, 66, 107, 121, 83]
 
-# Sort the array in descending order to make it easier to find the maximum sum
+# # Sort the array in descending order to make it easier to find the maximum sum
 A.sort(reverse=True)
 print(">>", A)
 
