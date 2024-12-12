@@ -904,9 +904,10 @@ obj.print_global()  # This will print "Modified by class"
 # A system-enforced access control where users cannot modify access controls; access is determined by system 
 # policies.
 # Implementation of Authentication and Authorization
+
+
 # 1. Password-based Authentication (Example using Flask)
 # Let's implement Password-based Authentication using Flask.
-
 # python
 # Copy code
 from flask import Flask, request, jsonify
@@ -932,9 +933,11 @@ def login():
 if __name__ == '__main__':
     app.run(debug=True)
 # Login process: A POST request with a username and password is checked against a stored hash (password is hashed for security).
+
+
+
 # 2. JWT Token-based Authentication
 # Let's implement JWT Authentication.
-
 # python
 # Copy code
 import jwt
@@ -978,9 +981,11 @@ def protected():
 if __name__ == '__main__':
     app.run(debug=True)
 # Login process: After successful authentication, a JWT token is issued. The /protected endpoint checks if the user provides a valid token.
+
+
+
 # 3. Role-Based Access Control (RBAC) with Flask
 # Here’s an implementation of Role-Based Authorization using Flask.
-
 # python
 # Copy code
 from flask import Flask, request, jsonify
@@ -1022,9 +1027,12 @@ def user():
 if __name__ == '__main__':
     app.run(debug=True)
 # RBAC Authorization: Users are assigned roles (admin, user). Only users with the appropriate role can access the protected routes.
+
+
+
+
 # 4. Multi-factor Authentication (MFA) with Flask
 # Implementing Multi-factor Authentication can involve sending a code (like an OTP) to the user’s phone or email.
-
 # python
 # Copy code
 import random
