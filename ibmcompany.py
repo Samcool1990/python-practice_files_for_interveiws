@@ -24,23 +24,23 @@ for key in d:
 
 
 # from fastapi import FastAPI
-# # from
-# # # schema:
-# # class schemName(Basemodel):
-# #     id : int
-# #     name:  str
-# ##mysql
-# # database connection
-# # db = SessionLocal()
-# # app = Fastapi()
+# from
+# # schema:
+# class schemName(Basemodel):
+#     id : int
+#     name:  str
+##mysql
+# database connection
+# db = SessionLocal()
+# app = Fastapi()
 
-# # @app.get('v1/employee/{empid}')
-# # def get_employee_id(empid: int):
-# #     try:
-# #         result = db.query.filter_by(schemName.id ==empid )
+# @app.get('v1/employee/{empid}')
+# def get_employee_id(empid: int):
+#     try:
+#         result = db.query.filter_by(schemName.id ==empid )
 
-# #         return {'message': 200, "body": result}
-# #     except Ellipsis as e:
-# #         print(e)
-# #     finally:
+#         return {'message': 200, "body": result}
+#     except Ellipsis as e:
+#         print(e)
+#     finally:
 #         db.close()
