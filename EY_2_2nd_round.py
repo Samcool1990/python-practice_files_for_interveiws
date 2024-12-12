@@ -101,3 +101,68 @@ if __name__ == "__main__":
         "https://www.stackoverflow.com",
     ]
     custom_multithreader(urls, num_threads=3)
+
+
+
+#Question:  patching on runtime: while testing your request an url & you get the response after getting the 
+# response you do patching on run time
+
+# Answer:
+# Runtime patching during testing is a common practice, especially when using tools like unittest.mock in 
+# Python. The idea is to modify an object or method's behavior at runtime during tests. This is particularly 
+# useful when you want to simulate or manipulate data after receiving a response from an API or URL.
+
+# Example:
+# Scenario
+# You have a function fetch_data that makes an API call and returns a response.
+# After receiving the response, you modify or "patch" a specific behavior in runtime to adjust for testing 
+# conditions.
+    
+
+import requests
+from unittest.mock import patch
+
+# Function to be tested
+def fetch_data(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()  # Assuming the response is JSON
+    return None
+
+# Test function with runtime patching
+def test_fetch_data_with_patching():
+    # Mocked response data
+    mocked_response = {
+        "id": 1,
+        "name": "Test User",
+        "status": "active"
+    }
+
+    # Step 1: Patch 'requests.get' to return a mock response
+    with patch('requests.get') as mock_get:
+        class MockResponse:
+            def __init__(self, json_data, status_code):
+                self.json_data = json_data
+                self.status_code = status_code
+
+            def json(self):
+                return self.json_data
+
+        # Mock the response from the API
+        mock_get.return_value = MockResponse(mocked_response, 200)
+
+        # Step 2: Fetch the data (will use the mocked response)
+        url = "https://api.example.com/user"
+        response = fetch_data(url)
+
+        # Step 3: Patch runtime behavior (e.g., modifying the response)
+        if "status" in response and response["status"] == "active":
+            response["status"] = "inactive"
+
+        # Assertions
+        assert response["status"] == "inactive"
+        assert response["name"] == "Test User"
+        print("Test passed with runtime patching:", response)
+
+# Run the test
+test_fetch_data_with_patching()
