@@ -860,7 +860,7 @@ obj.print_global()  # This will print "Modified by class"
 
 
 
-# Question: How would you create authorization in aapplication. FIrst tell how many types of authorization & 
+# Question: How would you create authorization in application. First tell how many types of authorization & 
 # Authentication are there & then how would you implement each of them with code example.
 # In application security, authentication and authorization are two crucial concepts that ensure only authorized users can access specific resources. Authentication verifies the identity of users, while authorization determines whether they can perform specific actions or access resources. Let’s break down the types of authentication and authorization, and how you can implement them.
 
