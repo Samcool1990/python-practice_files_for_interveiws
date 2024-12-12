@@ -22,24 +22,22 @@ p()
 # -A*A*A-
 
 
-def print_pattern():
-    n = 3  # Number of rows
+# def print_pattern():
+#     n = 3  # Number of rows
 
-    for i in range(n):
-        print("-" * (n - i - 1) + "*" + "*" * (2 * i) + "-" * (n - i - 1))
+#     for i in range(n):
+#         print("-" * (n - i - 1) + "*" + "*" * (2 * i) + "-" * (n - i - 1))
 
-        if i < n - 1:
-            print(
-                "-" * (n - i - 1)
-                + chr(65 + i)
-                + "*"
-                + "*" * (2 * i)
-                + chr(65 + i)
-                + "-" * (n - i - 1)
-            )
-
-
-print_pattern()
+#         if i < n - 1:
+#             print(
+#                 "-" * (n - i - 1)
+#                 + chr(65 + i)
+#                 + "*"
+#                 + "*" * (2 * i)
+#                 + chr(65 + i)
+#                 + "-" * (n - i - 1)
+#             )
+# print_pattern()
 
 
 l = [12, 123, 1234, 12345]

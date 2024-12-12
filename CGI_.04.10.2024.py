@@ -275,6 +275,9 @@ print(instance.metadata["author"])  # Output: John Doe
 # 3. Process Payment
 # 4. Notify Customer
 # # Compensate on failure
+
+
+
 # 3. Event-Driven Architecture
 # a. Event Sourcing
 # Instead of directly updating data, record all state changes as events in an event log. Microservices 
@@ -290,6 +293,9 @@ print(instance.metadata["author"])  # Output: John Doe
 # Other services subscribe to the event and react accordingly.
 # Pros: Loose coupling, scalability.
 # Cons: Harder to debug, requires idempotency handling.
+
+
+
 # 4. Data Partitioning and Ownership
 # Avoid sharing databases across microservices. Instead:
 
@@ -298,30 +304,48 @@ print(instance.metadata["author"])  # Output: John Doe
 # For example:
 
 # Order Service stores user_id but queries User Service for user details when needed.
+
+
+
 # 5. Implement Distributed Caching
 # Use distributed caching solutions (e.g., Redis, Memcached) to share consistent views of data across services.
 
 # Use cache invalidation policies to avoid stale data.
 # Example: Write-through or write-behind caching.
+
+
+
 # 6. Use Idempotent Operations
 # To handle retries (common in distributed systems), ensure operations are idempotent (same effect regardless of multiple executions).
 
 # Example: Use unique transaction IDs to prevent duplicate processing.
+
+
+
 # 7. Monitor and Resolve Conflicts
 # Conflicts can occur due to network partitions or service failures. Use techniques such as:
 
 # Conflict-free Replicated Data Types (CRDTs): Data structures that automatically resolve conflicts.
 # Custom Conflict Resolution Rules: Prioritize or merge conflicting updates based on business logic.
+
+
+
 # 8. Distributed Logging and Tracing
 # Use tools like Jaeger, Zipkin, or AWS X-Ray to trace requests and events across microservices.
 
 # Helps identify data inconsistencies and pinpoint the service causing the issue.
+
+
+
 # 9. Data Validation
 # Perform data validation at multiple layers:
 
 # At the source (user input validation).
 # During communication (API contracts, schemas using OpenAPI or gRPC).
 # At the target (before persisting data).
+
+
+
 # 10. Use a Centralized Configuration Service
 # To maintain consistent configurations (e.g., database settings, thresholds) across services, use tools like Spring Cloud Config or Consul.
 
