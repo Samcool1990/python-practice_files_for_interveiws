@@ -107,29 +107,6 @@ and provides ways to instantiate or create them externally. Dependency Container
 behavior and holds the map of dependencies for the components. If object A depends on object B, object A must
 not create import object B directly. Instead of this, object A must provide a way for injecting object B. The
  responsibility of object creation and dependency injection are delegated to external code.'''
-# email_client.py:
-class EmailClient(object):
-    
-    def __init__(self, config):
-        self._config = config
-        self.connect(self._config)
-        
-    def connect(self, config):
-        # Implement function here
-        pass
-
-# email_reader.py:
-class EmailReader(object):
-    
-    def __init__(self, client):
-        try:
-            self._client = client
-        except Exception as e:
-            raise e
-            
-    def read(self):
-        # Implement function here
-        pass
 
 
 
