@@ -72,3 +72,4 @@ else:
 # What type of scaling is it horizontal or Vertical.
 # Raw SQL queries
 # Difference between POST, PUT & PATCH
+# In AWS how would you create authorization
