@@ -76,4 +76,4 @@ else:
 # READ ABOUT all design Patterns:
 # https://codefresh.io/learn/microservices/top-10-microservices-design-patterns-and-how-to-choose/
 # rate limiting of API in application.
-# 
+# How would you test a API delay in application level ?
