@@ -73,3 +73,5 @@ else:
 # Raw SQL queries
 # Difference between POST, PUT & PATCH
 # In AWS how would you create authorization
+# READ ABOUT all design Patterns:
+# https://codefresh.io/learn/microservices/top-10-microservices-design-patterns-and-how-to-choose/
