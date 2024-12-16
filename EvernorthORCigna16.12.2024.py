@@ -75,3 +75,5 @@ else:
 # In AWS how would you create authorization
 # READ ABOUT all design Patterns:
 # https://codefresh.io/learn/microservices/top-10-microservices-design-patterns-and-how-to-choose/
+# rate limiting of API in application.
+# 
