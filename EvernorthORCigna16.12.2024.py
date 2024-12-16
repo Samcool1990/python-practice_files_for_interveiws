@@ -71,3 +71,4 @@ else:
 # you have one lambda with 4GB ram then you increase the RAM to 8GB & then add another lambda to it. 
 # What type of scaling is it horizontal or Vertical.
 # Raw SQL queries
+# Difference between POST, PUT & PATCH
