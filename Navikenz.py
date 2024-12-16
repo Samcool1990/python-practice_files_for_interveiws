@@ -97,17 +97,6 @@ outer()  #3.141592653589793
 # Since, pi is not defined in either local, enclosed or global scope, the built-in scope is looked up i.e the pi
 # value imported from the math module. Since the program is able to find the value of pi in the outermost scope,
 # the following output is obtained,
-
-
-
-
-
-
-
-
-
-
-
 # Scope resolution LEGB rule In Python
 # In Python, the LEGB rule is used to decide the order in which the namespaces are to be searched for scope resolution. The scopes are listed below in terms of hierarchy(highest to lowest/narrowest to broadest):
 
@@ -115,6 +104,7 @@ outer()  #3.141592653589793
 # Enclosed(E): Defined inside enclosing functions(Nested function concept)
 # Global(G): Defined at the uppermost level
 # Built-in(B): Reserved names in Python builtin modules
+
 
 
 
