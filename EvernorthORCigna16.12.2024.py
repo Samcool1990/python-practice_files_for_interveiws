@@ -66,8 +66,8 @@ else:
     print(f"No solution found for the target {target}.")
 
 # Questions:
-# How would you handle rate limiting in application level
-# Circuit breaker pattern
+# How would you handle rate limiting in application level ?
+# Circuit breaker pattern ?
 # you have one lambda with 4GB ram then you increase the RAM to 8GB & then add another lambda to it. 
 # What type of scaling is it horizontal or Vertical.
 # Raw SQL queries
@@ -75,6 +75,5 @@ else:
 # In AWS how would you create authorization
 # READ ABOUT all design Patterns:
 # https://codefresh.io/learn/microservices/top-10-microservices-design-patterns-and-how-to-choose/
-# rate limiting of API in application.
 # How would you test a API delay in application level ?
 # is it a good practive to return 500s status code ?
