@@ -484,8 +484,6 @@ except InvalidTransactionError as e:
 
 # 1. Define a Custom Exception Class
 # You can create a custom exception class by inheriting from Python's Exception class.
-
-
 # python
 # Copy code
 class CustomException(Exception):
@@ -494,9 +492,9 @@ class CustomException(Exception):
         self.detail = detail
 
 
+
 # 2. Add an Exception Handler
 # FastAPI allows you to register custom exception handlers using the @app.exception_handler decorator. The handler specifies how FastAPI should respond when the custom exception is raised.
-
 # python
 # Copy code
 from fastapi import FastAPI, HTTPException
@@ -521,8 +519,6 @@ async def custom_exception_handler(request, exc: CustomException):
 
 # 3. Raise the Custom Exception
 # You can raise your custom exception wherever necessary in your API endpoints.
-
-
 # python
 # Copy code
 @app.get("/items/{item_id}")
@@ -542,26 +538,28 @@ async def read_item(item_id: int):
 # Example Response:
 # json
 # Copy code
-# {
-#   "error": "InvalidItemID",
-#   "detail": "Item ID must be a positive integer."
-# }
+{
+  "error": "InvalidItemID",
+  "detail": "Item ID must be a positive integer."
+}
+
+
+
 # 5. Using FastAPI’s HTTPException
 # If you don't need a custom class but still want structured error handling, you can use FastAPI’s HTTPException directly:
-
 # python
 # Copy code
 # from fastapi import HTTPException
+@app.get("/items/{item_id}")
+async def read_item(item_id: int):
+    if item_id <= 0:
+        raise HTTPException(status_code=400, detail="Item ID must be a positive integer.")
+    return {"item_id": item_id}
 
-# @app.get("/items/{item_id}")
-# async def read_item(item_id: int):
-#     if item_id <= 0:
-#         raise HTTPException(status_code=400, detail="Item ID must be a positive integer.")
-#     return {"item_id": item_id}
+
+
 # 6. Advanced Example with Metadata
 # You can enrich your custom exception with metadata for more complex use cases.
-
-
 # python
 # Copy code
 class DetailedCustomException(Exception):
@@ -570,14 +568,12 @@ class DetailedCustomException(Exception):
         self.message = message
         self.meta = meta or {}
 
-
 @app.exception_handler(DetailedCustomException)
 async def detailed_custom_exception_handler(request, exc: DetailedCustomException):
     return JSONResponse(
         status_code=exc.code,
         content={"error": exc.message, "meta": exc.meta},
     )
-
 
 @app.get("/process")
 async def process_data():
@@ -591,10 +587,12 @@ async def process_data():
 # Example Response:
 # json
 # Copy code
-# {
-#     "error": "Processing error occurred.",
-#     "meta": {"info": "Failed due to invalid data.", "retryable": false},
-# }
+{
+    "error": "Processing error occurred.",
+    "meta": {"info": "Failed due to invalid data.", "retryable": False},
+}
+
+
 # Best Practices
 # Consistent Error Format: Define a standard format for errors and ensure all endpoints follow it.
 # Logging: Log custom exceptions for debugging and auditing.
