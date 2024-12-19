@@ -117,20 +117,19 @@ def lambda_handler(event, context):
 # Answer: Rate limiting prevents abuse by controlling the number of requests a client can make.
 
 # Techniques:
-# Token Bucket Algorithm:
 
+# Token Bucket Algorithm:
 # Maintain a "bucket" of tokens per client.
 # Each request consumes a token. Tokens are replenished at a defined rate.
 # In-Memory Data Stores:
-
 # Use Redis or similar to store rate-limiting data.
 # Store request counts and timestamps keyed by client ID.
-# Middleware Implementation:
 
+
+# Middleware Implementation:
 # Add rate-limiting middleware in frameworks like Django, FastAPI, or Express.js.
 # Example (Python - FastAPI with Redis):
 # python
-
 from fastapi import FastAPI, HTTPException
 import aioredis
 
