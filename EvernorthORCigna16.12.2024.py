@@ -154,22 +154,20 @@ async def rate_limiter(request, call_next):
 # Answer: To simulate and test API delays:
 
 # Introduce Artificial Delay:
-
 # Use tools like Postman to add delay in mock servers.
 # Simulate in test code with sleep:
 # python
-
 import time
 
 def delayed_response():
     time.sleep(5)  # Simulates delay
     return "Delayed response"
 
-# Chaos Engineering:
 
+
+# Chaos Engineering:
 # Tools like Gremlin or AWS Fault Injection Simulator introduce latency to observe system behavior.
 # Timeout Testing:
-
 # Configure shorter timeouts in your application and observe behavior when an API takes longer to respond.
 
 
