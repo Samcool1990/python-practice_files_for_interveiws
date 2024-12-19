@@ -175,7 +175,6 @@ def delayed_response():
 
 
 # Questions:
-# How would you handle rate limiting in application level ?
 # Circuit breaker pattern ?
 # you have one lambda with 4GB ram then you increase the RAM to 8GB & then add another lambda to it. 
 # What type of scaling is it horizontal or Vertical.
