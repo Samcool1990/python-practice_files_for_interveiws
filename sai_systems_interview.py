@@ -14,7 +14,9 @@ print(sorting_algo(list1))
 
 # http vs https
 
-# 401 vs 403
+
+# 401         vs  403
+#Unauthorized &  Forbidden access
 
 # SELECT * FROM your_table
 # ORDER BY your_column DESC
