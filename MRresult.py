@@ -1175,7 +1175,6 @@ print(result2)
 # this method.
 
 # Example Code:
-
 from abc import ABC, abstractmethod
 
 # Abstract class
