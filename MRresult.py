@@ -1130,13 +1130,17 @@ Bank.show_total_balance()  # Output: Total balance across all customers: 2500
 
 # 2. Static Method
 # What it is:
-# A static method is a method that doesn't take a reference to the instance or class as its first parameter. It behaves like a regular function that belongs to a class, but it doesn't need to access or modify the class or instance data. Static methods are defined with the @staticmethod decorator.
+# A static method is a method that doesn't take a reference to the instance or class as its first parameter. 
+# It behaves like a regular function that belongs to a class, but it doesn't need to access or modify the 
+# class or instance data. Static methods are defined with the @staticmethod decorator.
 
 # Real-life Example:
-# Consider a Calculator class. If you want to implement basic operations like addition, subtraction, multiplication, etc., they don't need access to the instance of the calculator, and they can be static methods because they operate independently of any object state.
+# Consider a Calculator class. If you want to implement basic operations like addition, subtraction, 
+# multiplication, etc., they don't need access to the instance of the calculator, and they can be static 
+# methods because they operate independently of any object state.
+
 
 # Example Code:
-
 class Calculator:
     
     @staticmethod
