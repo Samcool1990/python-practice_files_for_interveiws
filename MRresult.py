@@ -1164,7 +1164,9 @@ print(result2)
 
 # 3. Abstract Method
 # What it is:
-# An abstract method is a method that is declared in an abstract class (a class that cannot be instantiated) and must be implemented by any subclass of that abstract class. Abstract methods define a blueprint for the subclasses, but the actual implementation is left to the subclasses.
+# An abstract method is a method that is declared in an abstract class (a class that cannot be instantiated) 
+# and must be implemented by any subclass of that abstract class. Abstract methods define a blueprint for 
+# the subclasses, but the actual implementation is left to the subclasses.
 
 # Real-life Example:
 # Think of an Employee class, where you have different types of employees, such as FullTimeEmployee and PartTimeEmployee. You can define an abstract method calculate_salary() in the Employee class, but the actual salary calculation will differ for full-time and part-time employees. Each subclass must implement this method.
