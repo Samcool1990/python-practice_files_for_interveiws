@@ -1169,7 +1169,10 @@ print(result2)
 # the subclasses, but the actual implementation is left to the subclasses.
 
 # Real-life Example:
-# Think of an Employee class, where you have different types of employees, such as FullTimeEmployee and PartTimeEmployee. You can define an abstract method calculate_salary() in the Employee class, but the actual salary calculation will differ for full-time and part-time employees. Each subclass must implement this method.
+# Think of an Employee class, where you have different types of employees, such as FullTimeEmployee and 
+# PartTimeEmployee. You can define an abstract method calculate_salary() in the Employee class, but the 
+# actual salary calculation will differ for full-time and part-time employees. Each subclass must implement 
+# this method.
 
 # Example Code:
 
