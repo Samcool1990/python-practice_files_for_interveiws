@@ -291,6 +291,16 @@ def flatten_list(lst):
             result.append(item)
     return result
 
+nested_list = [1, 2, 3, 4, [5, 6, 7], 8]
+# Flattening a list using list comprehension
+flattened_list = [
+    item 
+    for sublist in nested_list 
+    for item in (sublist if isinstance(sublist, list) else [sublist])
+]
+
+print(flattened_list)
+
 
 d1 = {"1": {"2": "some", "3": {"4": "the"}}}
 
