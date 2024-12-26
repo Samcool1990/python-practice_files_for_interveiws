@@ -45,3 +45,13 @@ objc.func1()  # Call func1 from class B
 # 1. What is the difference useState & useRef?
 # 2. What is the difference between useEffect & useLayoutEffect?
 # 3. What is the difference between useMemo & useCallback?
+# 4. Type of Models in Django  
+
+
+# Question: Type of Models in Django  
+# Answer:               
+# 1. Abstract Base Classes: An abstract base class is a class that provides structure and functionality but 
+# isn’t meant to be instantiated. It’s used to define common attributes and methods that can be inherited by 
+# other classes.
+
+
