@@ -90,9 +90,7 @@ print(singleton1 is singleton2)  # Output: True
 
 # 1. Using Class Attributes
 # Class-level attributes can store metadata. These attributes are shared among all instances unless overridden.
-
 # python
-
 class MyClass:
     metadata = {
         "description": "This is a sample class",
@@ -100,15 +98,14 @@ class MyClass:
         "version": "1.0",
     }
 
-
 # # Accessing Metadata
 print(MyClass.metadata["description"])  # Output: This is a sample class
 print(MyClass.metadata["author"])       # Output: John Doe
+
+
 # 2. Using a Decorator to Attach Metadata
 # A custom decorator can attach metadata dynamically to a class.
-
 # python
-# Copy code
 def add_metadata(description, author, version):
     def decorator(cls):
         cls.metadata = {
@@ -119,19 +116,18 @@ def add_metadata(description, author, version):
         return cls
     return decorator
 
-
 @add_metadata(description="Sample class", author="John Doe", version="1.0")
 class MyClass:
     pass
 
-
 # # Accessing Metadata
 print(MyClass.metadata["description"])  # Output: Sample class
+
+
+
 # 3. Using a Metaclass
 # Metaclasses provide a robust way to define and manipulate metadata at the class creation level.
-
 # python
-# Copy code
 class MetaClass(type):
     def __new__(cls, name, bases, dct):
         dct["metadata"] = {
@@ -145,28 +141,27 @@ class MetaClass(type):
 class MyClass(metaclass=MetaClass):
     pass
 
-
 # # Accessing Metadata
 print(MyClass.metadata["description"])  # Output: MyClass class with metadata
+
+
+
 # 4. Using Python’s __annotations__ for Typed Metadata
 # The __annotations__ attribute can store metadata in a structured, typed way.
-
 # python
-# Copy code
 class MyClass:
     description: str = "This is a sample class"
     author: str = "John Doe"
     version: str = "1.0"
 
-
 # # Accessing Metadata
 print(MyClass.__annotations__)
 # # Output: {'description': <class 'str'>, 'author': <class 'str'>, 'version': <class 'str'>}
+
+
 # 5. Using __dict__ for Instance-Level Metadata
 # You can store metadata directly in the class or instance dictionary.
-
 # python
-# Copy code
 class MyClass:
     def __init__(self):
         self.__dict__["_metadata"] = {
@@ -179,11 +174,11 @@ class MyClass:
 # # Accessing Metadata
 instance = MyClass()
 print(instance._metadata["description"])  # Output: This is an instance with metadata
+
+
 # 6. Using dataclasses for Structured Metadata
 # The dataclasses module allows for structured metadata using the field function.
-
 # python
-# Copy code
 from dataclasses import dataclass, field
 
 @dataclass
@@ -196,11 +191,11 @@ class MyClass:
 # # Accessing Metadata
 print(MyClass.__dataclass_fields__["description"].metadata)
 # # Output: {'info': 'description metadata'}
+
+
 # 7. Using __slots__ for Metadata Optimization
 # For classes with fixed metadata, __slots__ can optimize memory usage by predefining attributes.
-
 # python
-# Copy code
 class MyClass:
     __slots__ = ["metadata"]
 
@@ -210,7 +205,6 @@ class MyClass:
             "author": "John Doe",
             "version": "1.0",
         }
-
 
 # # Accessing Metadata
 instance = MyClass()
@@ -226,7 +220,6 @@ print(instance.metadata["author"])  # Output: John Doe
 
 
 
-
 # Question: how would you maintain data consistency over different microservices
 # Answer:
 # Maintaining data consistency across different microservices is a critical challenge in distributed systems. 
@@ -238,7 +231,6 @@ print(instance.metadata["author"])  # Output: John Doe
 # 1. Design for the Type of Consistency
 # Microservices typically face a trade-off between consistency and availability due to the CAP theorem. 
 # Choose the appropriate consistency model based on your business requirements:
-
 # Strong Consistency: All microservices see the same data at the same time.
 # Eventual Consistency: Different microservices may temporarily have different data views but eventually 
 # converge to a consistent state.
