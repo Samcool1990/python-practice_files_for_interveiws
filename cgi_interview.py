@@ -1,4 +1,4 @@
-# YOu have a shopping list which you nee
+# You have a shopping list which you nee
 # Menu driven coding
 def shopping_list():
     # Create an empty dictionary to store the shopping list
