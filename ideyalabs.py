@@ -1,12 +1,12 @@
 #Basic structure for FastAPI i
-from fastapi import Fastapi
-from pydantic import Basemodel
+from fastapi import FastAPI
+from pydantic import BaseModel
 from typing import Optional, List
 # from sqlaclhemy import CreateEngine
 
-app = Fastapi()
+app = FastAPI()
 
-class request_body(Basemodel):
+class request_body(BaseModel):
     id: int
     name: str
     desc: str 
@@ -24,11 +24,11 @@ def get_db(session):
     finally:
         session.db.close()
 
-@app.get('/index', Depends = get_db)
+@app.get('/index')
 def func1(params: request_body):
     #business logic
-    db  = get_db()
-    db.execute()
+    # db  = get_db()
+    # db.execute()
     return {'status':200, 'message':'Success'}
 
 
