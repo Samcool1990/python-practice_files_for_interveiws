@@ -1,3 +1,199 @@
+# Explain CI/CD Implementation
+# "In my current project, we use GitLab CI/CD. The pipeline is triggered on every code commit, running unit 
+# tests using Pytest, followed by static code analysis via PyLint. If the tests pass, the application is 
+# containerized using Docker and deployed to AWS ECS. Rollbacks are managed through versioned Docker images."
+
+
+# Q1. Tell me a thing which you learned on your own and implemented it. What challenges did you face, and 
+# how did you overcome them?
+
+# "I learned Natural Language Processing (NLP) for a project requiring Named Entity Recognition (NER). 
+# The challenge was understanding data preprocessing and tuning the model for accuracy. I overcame it by 
+# taking a structured approach—reading documentation, practicing on datasets, and collaborating with the 
+# AI/ML team."
+
+# Q2. Tell me a challenge you faced in your project.
+# "A major challenge was optimizing a slow API that fetched hierarchical data. It resulted from an N+1 query 
+# issue. I resolved it by using Django's select_related and caching frequently accessed data."
+
+
+# Q3. Tell me an example where you took the initiative when you were not asked.
+# "In a project, I noticed we lacked detailed API documentation. I created and shared API specs using Swagger, 
+# which helped the frontend team and reduced delays."
+
+
+# Q4. You received critical feedback. How did you take it and work on the same?
+# "I once received feedback about my lack of proactive communication in stand-ups. I acknowledged it, started 
+# preparing concise updates, and ensured clarity in my progress reports, which improved team collaboration."
+
+
+# For the team offsite, there is a draft where you can win a price if your number is picked first. 
+# The game uses two integers x, y to generate a sequence.
+# Given two integers x and y, construct an infinite sequence of integers A (a0, a1, ...} as follows:
+# a0 = 0 and for every i >= 1, a(2i-1)=a (21-2)+x and a(21) = a(2-1) - y.
+# Given three integers x, y, z, find the index of the first occurrence of z in A or report that z does not 
+# appear in A.
+# For example, if x=2, y=1 and z=3, then A=(0,2,1,3,2,4,3,...) and the answer is 3 (a(3)=3 and 
+# this is the first occurrence of 3 in A). If x=2, y=0 and z=3, then A=(0,2,2,4,4,6,6,...) and 
+# the answer is -1 (there is no occurrence of 3 in A).
+# Additional info
+# 0<= x, y, z <=1000
+
+def generate_sequence(x,y,n,z):
+    A = [0]
+    
+    for i in range(1,n):
+        if i % 2 == 1:
+            A.append(A[i-1] + x)
+        else:
+            A.append(A[i-1] - y)
+            
+    for i in range(len(A)):
+        if A[i] == z:
+            return A,i
+    else:
+        return A,-1
+        
+        
+x = 2
+y = 0
+n = 10
+z = 3
+
+sequence , l = generate_sequence(x,y,n,z)
+
+if l != -1:
+    print("{} value is present at index {}".format(z,l))
+else:
+    print(-1)
+print('Sequence is :', sequence)
+
+
+# Let me walk you through the problem and solution systematically, highlighting key areas Fabien might focus 
+# on during the interview.
+
+# Problem Analysis
+# The function generate_sequence:
+
+# Generates a sequence starting with 0.
+# Alternates between adding x and subtracting y for n terms.
+# Checks if the sequence contains a specific value z.
+# Returns the sequence and the index of z, or -1 if z is not found.
+# Code Complexity
+# Time Complexity:
+
+# Generating the sequence: 
+# 𝑂
+# (
+# 𝑛
+# )
+# O(n) because it iterates once to calculate 
+# 𝑛
+# n terms.
+# Searching for 
+# 𝑧
+# z: 
+# 𝑂
+# (
+# 𝑛
+# )
+# O(n) because it iterates through the sequence to check for 
+# 𝑧
+# z.
+# Overall time complexity: 
+# 𝑂
+# (
+# 𝑛
+# )
+# +
+# 𝑂
+# (
+# 𝑛
+# )
+# =
+# 𝑂
+# (
+# 𝑛
+# )
+# O(n)+O(n)=O(n).
+# Space Complexity:
+
+# Storing the sequence: 
+# 𝑂
+# (
+# 𝑛
+# )
+# O(n), where 
+# 𝑛
+# n is the number of terms in the sequence.
+# Best and Worst-Case Scenarios
+# Best Case:
+
+# The target value z is found early in the sequence. For example, at index 
+# 0
+# 0 or 
+# 1
+# 1. The search ends quickly.
+# Worst Case:
+
+# The target value z is not present in the sequence, requiring a full traversal of the sequence (complexity 
+# 𝑂
+# (
+# 𝑛
+# )
+# O(n)).
+# Addressing Infinite Sequence
+# Since the sequence is potentially infinite, we must impose a finite limit to make the problem solvable. 
+# For example:
+
+# Assume a maximum limit for 
+# 𝑛
+# n (like 1000).
+# If 
+# 𝑧
+# z is beyond a practical range, handle it gracefully.
+
+# Key Discussion Points in the Interview
+# Complexity Explanation:
+
+# Time complexity 
+# 𝑂
+# (
+# 𝑛
+# )
+# O(n) for both sequence generation and search.
+# Space complexity 
+# 𝑂
+# (
+# 𝑛
+# )
+# O(n) due to storage of the sequence.
+# Infinite Sequence Handling:
+
+# Imposing a finite limit (e.g., 
+# 𝑛
+# =
+# 1000
+# n=1000).
+# Practicality of breaking the loop after 
+# 𝑧
+# z is found.
+# Best/Worst Case:
+
+# Best: 
+# 𝑧
+# z found at the start.
+# Worst: 
+# 𝑧
+# z not found, requiring a full traversal.
+# Real-World Application:
+
+# Patterns like this can be found in arithmetic sequences.
+# Discuss scenarios where handling infinite sequences or cyclic patterns is required (e.g., simulations, calculations with limits).
+# Let me know if you want additional details or practice scenarios for this!
+
+
+
 # 1.
 sequence = [2,0.5,7,"21" "x100", 100,"001x" ]
 print(sequence[3:-2][0])
