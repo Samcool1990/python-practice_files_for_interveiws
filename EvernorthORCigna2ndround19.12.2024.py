@@ -15,7 +15,13 @@ while index < len(s):
 for group in output:
     print(group)
 
-
+# a
+# bc    
+# def   
+# ghij  
+# klmno 
+# pqrstu
+# vwxyz
 # Question: What is the difference between Where & Having Clause
 # Answer:
 # The main difference between the WHERE and HAVING clauses in SQL is that the WHERE clause filters individual 
