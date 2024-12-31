@@ -18,7 +18,7 @@ print(summation)
 
 
 
-#CalL A through constructor
+#Call A through constructor
 class A:
     def __init__(self, person):
         self.person = person
