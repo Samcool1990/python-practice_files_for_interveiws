@@ -7,12 +7,11 @@
 # Controlled Access: The instance is accessible globally but is protected from being re-instantiated.
 # Lazy Initialization: The instance is created only when it is needed (optional).
 # Implementation of Singleton Pattern in Python
+
+
 # 1. Using a Class Variable
 # A simple way to implement the singleton pattern is by using a class-level variable to store the single instance.
-
 # python:
-
-
 class Singleton:
     _instance = None  # Class-level variable to store the single instance
 
@@ -22,18 +21,15 @@ class Singleton:
             cls._instance = super().__new__(cls, *args, **kwargs)
         return cls._instance
 
-
 # Example Usage
 singleton1 = Singleton()
 singleton2 = Singleton()
-
 print('>>>>>>>>>>',singleton1 is singleton2)  # Output: True
+
+
 # 2. Using a Decorator
 # You can create a decorator to transform any class into a singleton.
-
 # python:
-
-
 def singleton(cls):
     instances = {}
 
@@ -44,23 +40,21 @@ def singleton(cls):
 
     return get_instance
 
-
 @singleton
 class Singleton:
     pass
-
 
 # Example Usage
 singleton1 = Singleton()
 singleton2 = Singleton()
 
 print(singleton1 is singleton2)  # Output: True
+
+
+
 # 3. Using a Metaclass
 # A more Pythonic and advanced approach is to use a metaclass.
-
 # python:
-
-
 class SingletonMeta(type):
     _instances = {}
 
@@ -70,16 +64,17 @@ class SingletonMeta(type):
             cls._instances[cls] = super().__call__(*args, **kwargs)
         return cls._instances[cls]
 
-
 class Singleton(metaclass=SingletonMeta):
     pass
-
 
 # Example Usage
 singleton1 = Singleton()
 singleton2 = Singleton()
 
 print(singleton1 is singleton2)  # Output: True
+
+
+
 
 # Question: how would you maintain meta for a class
 # Answer: Maintaining metadata for a class in Python involves storing additional information about the class 
