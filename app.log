@@ -106,3 +106,9 @@
 2024-12-10 20:39:59,079 - MyAppLogger - ERROR - This is an error message
 2024-12-10 20:39:59,079 - MyAppLogger - CRITICAL - This is a critical message
 2024-12-10 20:39:59,080 - MyAppLogger - INFO - User performed an action
+2024-12-31 10:58:24,262 - MyAppLogger - DEBUG - This is a debug message
+2024-12-31 10:58:24,262 - MyAppLogger - INFO - This is an info message
+2024-12-31 10:58:24,262 - MyAppLogger - WARNING - This is a warning message
+2024-12-31 10:58:24,267 - MyAppLogger - ERROR - This is an error message
+2024-12-31 10:58:24,268 - MyAppLogger - CRITICAL - This is a critical message
+2024-12-31 10:58:24,268 - MyAppLogger - INFO - User performed an action

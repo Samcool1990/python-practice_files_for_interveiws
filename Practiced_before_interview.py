@@ -489,7 +489,7 @@ except InvalidTransactionError as e:
     print(e)
 
 
-# Questions: Write a custom exception in fastapi
+# Question: Write a custom exception in fastapi
 # Answer:Creating custom exceptions in FastAPI involves defining a custom exception class and integrating it with FastAPI's exception handling system. Here's how you can do it step by step:
 
 # 1. Define a Custom Exception Class
