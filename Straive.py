@@ -114,3 +114,38 @@ if __name__ == "__main__":
 # Security breach	Yes	Restore, but first secure the system.
 # By evaluating these factors and following best practices, you can decide if restoring a database from a 
 # backup is the most appropriate action.
+
+
+
+
+# What is the difference between AWS Lambda & AWS EC2
+
+
+
+
+# Develop a python function which takes a string as a parameter, it returns either True or False depending on whether its a  balanced string or not.
+# Examples of a balanced string: (True cases)
+# (hello world)
+# (hello (world))
+# Examples of False cases
+# (hello (world)
+# )hello (world)
+
+def parenthesis_balanced(s):
+    stack = []
+    opening = "("
+    closing = ")"
+    
+    for char in s:
+        if char in opening:
+            stack.append(char)
+            
+        if char in closing:
+            if not stack:
+                return False
+            if opening.index(stack.pop()) != closing.index(char):
+                return False
+    return not stack
+    
+print(parenthesis_balanced("(hello (world))"))
+print(parenthesis_balanced("(hello (world)"))      
