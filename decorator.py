@@ -68,3 +68,46 @@ print("Addition result:", result)
 
 result = subtract(10, 4)
 print("Subtraction result:", result)
+
+
+
+
+# Create a decorator for custom exception in python.
+import functools
+import logging
+
+# Define a custom exception
+class CustomException(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+        self.message = message
+
+# Decorator for handling custom exceptions
+def handle_custom_exception(default_message="An error occurred"):
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            try:
+                return func(*args, **kwargs)
+            except CustomException as e:
+                logging.error(f"CustomException caught: {e.message}")
+                return {"error": e.message}
+            except Exception as e:
+                logging.error(f"Unexpected exception: {e}")
+                return {"error": default_message}
+        return wrapper
+    return decorator
+
+# Example usage
+@handle_custom_exception(default_message="Something went wrong")
+def risky_function(x):
+    if x < 0:
+        raise CustomException("Negative value error!")
+    elif x == 0:
+        raise ValueError("Zero value error!")
+    return f"Success with {x}"
+
+# Test the decorator
+print(risky_function(5))  # Should print: Success with 5
+print(risky_function(0))  # Should handle ValueError
+print(risky_function(-1)) # Should handle CustomException
