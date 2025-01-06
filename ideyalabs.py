@@ -51,3 +51,49 @@ print(add(5,3))
 
 #Custom exception using decorator
 #Multithread & Multiprocessing when to use in reall life?
+
+# 2ndround F2F
+# given a string find out the count of the possible combination between the string's elements.
+# Example: given string 'abc'. 'abc', 'acb','bca','bac','cab','cba'. output = 6
+import math
+
+def count_permutations(string):
+    # Calculate the length of the string
+    n = len(string)
+    # Return factorial of n
+    return math.factorial(n)
+
+# Example usage
+input_string = "abc"
+output = count_permutations(input_string)
+print(f"The count of permutations for the string '{input_string}' is: {output}")
+
+
+# same question but output should be all the combinations. 
+# output = ['abc', 'acb','bca','bac','cab','cba']
+
+from itertools import permutations
+
+def generate_permutations(string):
+    # Generate all permutations as tuples
+    perm_tuples = permutations(string)
+    # Convert each tuple into a string and return as a list
+    return [''.join(perm) for perm in perm_tuples]
+
+# Example usage
+input_string = "abc"
+output = generate_permutations(input_string)
+print(f"All permutations of the string '{input_string}' are: {output}")
+
+
+
+
+
+
+
+
+
+
+
+
+
