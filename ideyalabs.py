@@ -89,6 +89,11 @@ print(f"All permutations of the string '{input_string}' are: {output}")
 
 
 
+# Common elements in two sorted arrays 
+array1 = [1,2,3,7,8]
+array2 = [7,8]
+array3 = [i for i in array1 if i in array2]
+print(array3)   
 
 
 
