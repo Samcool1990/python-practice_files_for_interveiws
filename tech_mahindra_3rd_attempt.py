@@ -1,7 +1,7 @@
 #Leetcode 121
 
 import math
-
+from typing import List
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         sellOne = 0
