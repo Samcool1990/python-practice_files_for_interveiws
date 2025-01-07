@@ -51,6 +51,7 @@ print(add(5,3))
 
 #Custom exception using decorator
 #Multithread & Multiprocessing when to use in reall life?
+#Multithread is I/O bound & Multiprocessing is CPU bound.
 
 # 2ndround F2F
 # given a string find out the count of the possible combination between the string's elements.
