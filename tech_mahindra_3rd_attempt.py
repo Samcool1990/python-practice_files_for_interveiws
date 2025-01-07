@@ -12,3 +12,24 @@ class Solution:
             holdOne = max(holdOne, -price)
         
         return sellOne
+    
+
+
+
+
+def maxProfit(prices):
+    if not prices:
+        return 0
+
+    min_price = float('inf')
+    max_profit = 0
+
+    for price in prices:
+        # Update the minimum price seen so far
+        min_price = min(min_price, price)
+        # Calculate the profit if we sell at the current price
+        profit = price - min_price
+        # Update the maximum profit
+        max_profit = max(max_profit, profit)
+
+    return max_profit
