@@ -1,33 +1,84 @@
-# from functools import wraps
-# import time
-# # from loguru import logger
+from functools import wraps
+import time
+# from loguru import logger
 
-# def main_decorator(DEBUG = "Custom Logging"):
-#     def decorator(func):
-#         @wraps(func)
-#         def wrapper(*args,**kwargs):
-#             start = time.time()
-#             result = func(*args,**kwargs)
-#             end = time.time()
-#             total_time = end - start
-#             # logger.info(f"Total {total_time} time taken to run {__func__.__name__}")
-#             print(f"Total {total_time} time taken to run {func.__name__}")
-#             return result
-#         return wrapper
-#     return decorator
+def main_decorator(DEBUG = "Custom Logging"):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args,**kwargs):
+            start = time.time()
+            result = func(*args,**kwargs)
+            end = time.time()
+            total_time = end - start
+            # logger.info(f"Total {total_time} time taken to run {__func__.__name__}")
+            print(f"Total {total_time} time taken to run {func.__name__}")
+            return result
+        return wrapper
+    return decorator
 
 
-# @main_decorator("Custom Logging")
-# def add(a,b):
-#     return a + b
+@main_decorator("Custom Logging")
+def add(a,b):
+    return a + b
     
-# print(add(5,3))
+print(add(5,3))
 
 
 
-# a = (1,2,3,4)
-# a = (1,2,3,4,5)
+a = (1,2,3,4)
+a = (1,2,3,4,5)
+# To handle such cases where reassignment of variables (like tuples in your example) might lead to bugs or 
+# unintended behavior, you can adopt the following best practices:
 
+# 1. Use Constants for Immutable Data:
+# In Python, you can follow a naming convention (e.g., all uppercase) for immutable values like tuples to 
+# indicate they should not be reassigned.
+# python
+# Copy code
+# A = (1, 2, 3, 4)  # Indicates a constant
+# This doesn't enforce immutability programmatically but communicates intent to other developers.
+# 2. Implement Read-Only Attributes:
+# Use classes to encapsulate the tuple and prevent reassignment by implementing read-only properties.
+# python
+# Copy code
+# class ImmutableTuple:
+#     def __init__(self, values):
+#         self._values = values
+
+#     @property
+#     def values(self):
+#         return self._values
+
+# a = ImmutableTuple((1, 2, 3, 4))
+# # Access using a.values
+# Any attempt to modify a.values directly will raise an error.
+
+# 3. Static Analysis Tools:
+# Use tools like mypy or Pyright to catch unintended reassignments. Define a with a specific type hint and 
+# avoid reassigning variables of the same name to different types or lengths.
+# python
+# Copy code
+# from typing import Tuple
+
+# a: Tuple[int, int, int, int] = (1, 2, 3, 4)
+# If someone tries to reassign it to (1, 2, 3, 4, 5), the static type checker will throw an error.
+
+# 4. Code Reviews:
+# Ensure that your team follows strict code review practices to catch such mistakes. Use guidelines like 
+# "Avoid reusing variable names for different purposes."
+# 5. Linter Rules:
+# Set up linters (e.g., Flake8, pylint) with custom rules to warn against variable reuse in the same scope.
+# 6. Use Comments and Documentation:
+# Clearly document the purpose and expected immutability of a. This reduces the likelihood of unintentional 
+# reassignment.
+# 7. Functional Programming Approach:
+# Prefer creating new variables rather than mutating or reassigning existing ones.
+# python
+# Copy code
+# a = (1, 2, 3, 4)
+# # Instead of reassigning
+# b = (1, 2, 3, 4, 5)  # Use a new variable
+# By adopting these practices, you can minimize the risk of bugs due to such reassignments in your codebase.
 
 
 # try:
@@ -41,27 +92,36 @@
 # finally:
 #     print("Finally Block is running")
 
-# class 
-
-# class CustomException(Exception):
-#     def __init__(self, amount, message, transaction_id):
-#         self.amount = amount
-#         self.transaction_id = transaction_id
-#         self.message = message
-#         print(f"{self.transaction_id} with {self.amount} has failed with {self.message}")
-#         super().__init__(self.message)
-        
-#     def __str__(self):
-#         print(self.message )
-        
-
-# amount = 100
-# message = "Failed"
-# transaction_id = "001"
 
 
-# if amount != 100:
-#     raise CustomException(amount,message , transaction_id)
+
+class CustomException(Exception):
+    def __init__(self, amount, message, transaction_id):
+        self.amount = amount
+        self.transaction_id = transaction_id
+        self.message = message
+        # Use a formatted string for the error message
+        error_message = f"Transaction ID: {self.transaction_id} with Amount: {self.amount} has failed. Reason: {self.message}"
+        super().__init__(error_message)  # Pass the formatted error message to the base class
+
+    def __str__(self):
+        # Return a string representation of the error message
+        return f"[CustomException] {self.message} (Transaction ID: {self.transaction_id}, Amount: {self.amount})"
+
+
+# Example Usage:
+amount = 100
+message = "Failed"
+transaction_id = "001"
+
+try:
+    if amount != 100:
+        raise CustomException(amount, message, transaction_id)
+    else:
+        print(f"Transaction ID: {transaction_id} with Amount: {amount} was successful.")
+except CustomException as e:
+    print(str(e))
+
 
 
 
