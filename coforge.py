@@ -73,15 +73,35 @@
 # Initial array of sets
 arr = [{"metal", "rock"}, {"metallica", "masti"}, {"master", "masti"}, {"blaster", "rock"}]
 search = 'metal'
+
+# 1 way:
 result = []
-for i in arr:
-    
-    
-    if search in i:
-        result.append(i)
-print(result)
+# Search for elements containing "metal"
+result = [s for s in arr if any(search in element for element in s)]
+
+# Output the result
+print("Sets containing elements with 'metal':", result)
     
 
+
+
+# 2nd way:
+# Initialize an empty set to store the result
+result = set()
+
+# Iterate through the array of sets
+for s in arr:
+    # Check if the search term exists in the set
+    if any(search in item for item in s):
+        # Add all elements of the set to the result
+        result.update(s)
+
+# Remove the search term itself from the result if it exists
+result.discard(search)
+
+# Convert the set to a list and print the result
+output = list(result)
+print(output)
 
 
 
