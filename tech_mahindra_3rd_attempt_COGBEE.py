@@ -17,7 +17,7 @@ class Solution:
 
 
 
-def maxProfit(prices):
+def maxProfit2(prices):
     if not prices:
         return 0
 
@@ -33,3 +33,4 @@ def maxProfit(prices):
         max_profit = max(max_profit, profit)
 
     return max_profit
+
