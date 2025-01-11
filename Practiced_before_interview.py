@@ -226,6 +226,32 @@ print(
 )  # Output: [2, 2, 2]
 
 
+
+list1 = ['flower', 'floor', 'flow']
+list2=['cat', 'rat', 'mice']
+
+def longest_common_prefix(words):
+    if not words:
+        return 0
+
+    # Find the shortest word in the list
+    shortest_word = min(words, key=len)
+
+    # Compare characters of the shortest word with all other words
+    for i, char in enumerate(shortest_word):
+        for word in words:
+            if word[i] != char:
+                # Return the prefix up to the point of mismatch
+                return shortest_word[:i] if i > 0 else 0
+
+    return shortest_word  # The entire shortest word is a common prefix
+print(longest_common_prefix(list1))  # Output: 'flo'
+print(longest_common_prefix(list2)) 
+
+
+
+
+
 import multiprocessing
 import time
 
