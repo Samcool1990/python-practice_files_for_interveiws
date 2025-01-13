@@ -30,17 +30,16 @@ a = (1,2,3,4,5)
 # To handle such cases where reassignment of variables (like tuples in your example) might lead to bugs or 
 # unintended behavior, you can adopt the following best practices:
 
+
 # 1. Use Constants for Immutable Data:
 # In Python, you can follow a naming convention (e.g., all uppercase) for immutable values like tuples to 
 # indicate they should not be reassigned.
-# python
-# Copy code
 # A = (1, 2, 3, 4)  # Indicates a constant
 # This doesn't enforce immutability programmatically but communicates intent to other developers.
+
+
 # 2. Implement Read-Only Attributes:
 # Use classes to encapsulate the tuple and prevent reassignment by implementing read-only properties.
-# python
-# Copy code
 # class ImmutableTuple:
 #     def __init__(self, values):
 #         self._values = values
@@ -53,32 +52,45 @@ a = (1,2,3,4,5)
 # # Access using a.values
 # Any attempt to modify a.values directly will raise an error.
 
+
 # 3. Static Analysis Tools:
 # Use tools like mypy or Pyright to catch unintended reassignments. Define a with a specific type hint and 
 # avoid reassigning variables of the same name to different types or lengths.
-# python
-# Copy code
+
 # from typing import Tuple
 
 # a: Tuple[int, int, int, int] = (1, 2, 3, 4)
 # If someone tries to reassign it to (1, 2, 3, 4, 5), the static type checker will throw an error.
 
+
+
 # 4. Code Reviews:
 # Ensure that your team follows strict code review practices to catch such mistakes. Use guidelines like 
 # "Avoid reusing variable names for different purposes."
+
+
 # 5. Linter Rules:
 # Set up linters (e.g., Flake8, pylint) with custom rules to warn against variable reuse in the same scope.
+
+
 # 6. Use Comments and Documentation:
 # Clearly document the purpose and expected immutability of a. This reduces the likelihood of unintentional 
 # reassignment.
+
+
 # 7. Functional Programming Approach:
 # Prefer creating new variables rather than mutating or reassigning existing ones.
-# python
-# Copy code
+
 # a = (1, 2, 3, 4)
 # # Instead of reassigning
 # b = (1, 2, 3, 4, 5)  # Use a new variable
 # By adopting these practices, you can minimize the risk of bugs due to such reassignments in your codebase.
+
+
+
+
+
+
 
 
 # try:
@@ -91,6 +103,8 @@ a = (1,2,3,4,5)
     
 # finally:
 #     print("Finally Block is running")
+
+
 
 
 
