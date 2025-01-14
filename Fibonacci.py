@@ -29,6 +29,22 @@ def fibonacci2(n):
 fibonacci2(5)
 
 
+
+######################################
+# fibonacci_series using a Generator #
+######################################
+def fibonacci_series(n):
+    a,b = 0,1
+    for i in range(n):
+        yield a
+        a,b = b,a+b
+
+f1 = fibonacci_series(5)
+print(next(f1))
+print(next(f1))
+print(next(f1))
+print(next(f1))
+
 ##RECURSSION##
 def fibonacci3(n):
     if n <= 1:
@@ -44,18 +60,8 @@ else:
     for i in range(n):
         print(fibonacci3(i))
 
-# fibonacci_series using a Generator
-def fibonacci_series(n):
-    a,b = 0,1
-    for i in range(n):
-        yield a
-        a,b = b,a+b
 
-f1 = fibonacci_series(5)
-print(next(f1))
-print(next(f1))
-print(next(f1))
-print(next(f1))
+
 
 def fibonacci_series2(n):
     a,b = 0,1
