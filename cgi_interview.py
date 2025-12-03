@@ -58,7 +58,28 @@ print(shopping_list())
 # Q2  Given array will check summation of 3 elements at a time & find out the maximimum sum.
 A = [35, 42, 35, 97, 66, 107, 121, 83]
 Output = [325]  # sumaation of 107,121,97
+def max_sum_triplet(arr):
+    if len(arr) < 3:
+        raise ValueError("Array must have at least 3 elements.")
+    
+    current_sum = sum(arr[:3])
+    max_sum = current_sum
+    max_start = 0
+    
+    for i in range(3, len(arr)):
+        current_sum += arr[i] - arr[i - 3]
+        if current_sum > max_sum:
+            max_sum = current_sum
+            max_start = i - 2
+    
+    return arr[max_start:max_start + 3], max_sum
 
+
+# Example usage
+A = [35, 42, 35, 97, 66, 107, 121, 83]
+triplet, total = max_sum_triplet(A)
+print("Triplet with max sum:", *triplet, sep=", ")
+print("Sum:", total)
 
 A = [35, 42, 35, 97, 66, 107, 121, 83]
 
