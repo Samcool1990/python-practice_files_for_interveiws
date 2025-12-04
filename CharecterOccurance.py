@@ -55,3 +55,18 @@ def least_charecter_occurance4(s):
 
 
 least_charecter_occurance4("aakkbjjgasdlkjjjlfof")
+
+
+
+# Python
+s = "asdasfsdgfhfghfghgddd"
+d = {c: s.count(c) for c in set(s)}
+print(d)
+
+
+
+s = "asdasfsdgfhfghfghgddd"
+d = {}
+for i in s:
+    d[i] = d.get(i,0) +1
+print(d)
