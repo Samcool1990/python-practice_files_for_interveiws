@@ -103,7 +103,6 @@ if __name__ == "__main__":
 # output should be yyyy, mm, customerid, totalamountordered
 # Note: orderid is linked with both tables.
 
-
 # Answer: 
 # SELECT
 #     YEAR(o.date) AS yyyy,
@@ -123,3 +122,37 @@ if __name__ == "__main__":
 # ORDER BY
 #     yyyy, mm, totalamountordered DESC
 # LIMIT 1;
+
+
+
+# SQL
+# WITH monthly_customer_totals AS (
+#   SELECT
+#     EXTRACT(YEAR FROM o.date) AS yyyy,
+#     EXTRACT(MONTH FROM o.date) AS mm,
+#     o.customerid,
+#     SUM(od.unitprice * od.quantity) AS totalamountordered
+#   FROM Orders AS o
+#   JOIN Order_Details AS od
+#     ON od.orderid = o.orderid
+#   GROUP BY
+#     EXTRACT(YEAR FROM o.date),
+#     EXTRACT(MONTH FROM o.date),
+#     o.customerid
+# )
+# SELECT
+#   yyyy,
+#   mm,
+#   customerid,
+#   totalamountordered
+# FROM (
+#   SELECT
+#     mct.*,
+#     ROW_NUMBER() OVER (
+#       PARTITION BY yyyy, mm
+#       ORDER BY totalamountordered DESC, customerid
+#     ) AS rn
+#   FROM monthly_customer_totals AS mct
+# ) AS ranked
+# WHERE rn = 1
+# ORDER BY yyyy, mm;
