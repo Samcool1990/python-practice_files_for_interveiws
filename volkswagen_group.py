@@ -1,4 +1,4 @@
-#Question: Given a positiove integer n. Write a recurssive function to print number from -n to n.
+#Question: Given a positive integer n. Write a recurssive function to print number from -n to n.
 # Answer:
 def print_numbers(n, current=None):
     if current is None:
@@ -16,7 +16,7 @@ def print_numbers(n, current=None):
 
 # Example usage
 n = 5
-print_numbers(n)
+print_numbers(n)    
 
 # Question: Which clause gives you the list of query data 
 # Answer: SELECT clause.

@@ -16,6 +16,9 @@ l2 = [1, 2, 3]
 output = {key: value for key, value in zip(l1, reversed(l2))}
 print("output", output)
 
+
+
+#SELECTTION SORT
 list1 = [5, 3, 2, 1, 4]
 n = len(list1)
 for i in range(n):
