@@ -204,7 +204,7 @@ def alert(*args, **kwargs):
     print(*args[0],kwargs.values()[0])
     
     
-alert("Hellow world", msg = 123)
+# alert("Hellow world", msg = 123)
 # Will throw error
 
 
@@ -282,91 +282,91 @@ print("all tasks are completed")
 
 
 4.
-import time
-from multiprocessing.pool import Pool
+# import time
+# from multiprocessing.pool import Pool
 
-def task():
-    time.sleep(1)
+# def task():
+#     time.sleep(1)
 
-pool = Pool()
-pool.apply_async(task)
-pool.apply_async(task)
+# pool = Pool()
+# pool.apply_async(task)
+# pool.apply_async(task)
 
-pool.join()
-pool.terminate()
+# pool.join()
+# pool.terminate()
 
-print("all tasks are completed")
+# print("all tasks are completed")
 
-# Answer:3
+# # Answer:3
 
-sequence = [2, -100,0.0, 9.2, 1., 5, -.0, 12 ]
-print([num for num in sequence if type(num) == int])
+# sequence = [2, -100,0.0, 9.2, 1., 5, -.0, 12 ]
+# print([num for num in sequence if type(num) == int])
 
-
-import unittest
-list1 = [1,2,3]
-
-# class TestLists(unittest.TestCase):
-#      def test_is_unique(self):
-           #assert that the list in unique here
-
-# unittest.main()
 
 # import unittest
+# list1 = [1,2,3]
 
-# list1 = [1, 2, 3]
+# # class TestLists(unittest.TestCase):
+# #      def test_is_unique(self):
+#            #assert that the list in unique here
 
-class TestLists(unittest.TestCase):
-    def test_is_unique(self):
-        # Check if the list has unique elements
-        self.assertEqual(len(list1), len(set(list1)), "The list contains duplicate elements")
+# # unittest.main()
 
-if __name__ == "__main__":
-    unittest.main()
+# # import unittest
+
+# # list1 = [1, 2, 3]
+
+# class TestLists(unittest.TestCase):
+#     def test_is_unique(self):
+#         # Check if the list has unique elements
+#         self.assertEqual(len(list1), len(set(list1)), "The list contains duplicate elements")
+
+# if __name__ == "__main__":
+#     unittest.main()
 
 
 
 
 
-class Dog:
-    def __init__(self, name):
-        __name__ = name
+# class Dog:
+#     def __init__(self, name):
+#         __name__ = name
         
-    def name(self):
-        return __name__
+#     def name(self):
+#         return __name__
         
-dogobj = Dog("Scooby")
-print(dogobj.name())
+# dogobj = Dog("Scooby")
+# print(dogobj.name())
 # __main__
 
 
 
 
 # How would you create a context manager generator for a mysql database ?
-import mysql.connector
-from contextlib import contextmanager
+# import mysql.connector
+# from contextlib import contextmanager
 
-@contextmanager
-def database_connection(db):
-    conn = mysql.connector.connect(user='username', password='password', database=db)
-    try:
-        yield conn
-    finally:
-        conn.close()
+# @contextmanager
+# def database_connection(db):
+#     conn = mysql.connector.connect(user='username', password='password', database=db)
+#     try:
+#         yield conn
+#     finally:
+#         conn.close()
 
 
 
-cmd = '$ cd ../home'.split()
-match cmd:
-    case '$', _,_,'../home':
-        print('case1')
+# cmd = '$ cd ../home'.split()
+# match cmd:
+#     case '$', _,_,'../home':
+#         print('case1')
         
-    case _,'cd',*dir:
-        print('case2')
-    case '$ cd', *dir:
-        print('case3')
-    case _:
-        print('case4')
+#     case _,'cd',*dir:
+#         print('case2')
+#     case '$ cd', *dir:
+#         print('case3')
+#     case _:
+#         print('case4')
 #case2
 
 
