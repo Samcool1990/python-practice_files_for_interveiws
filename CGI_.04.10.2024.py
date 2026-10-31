@@ -353,6 +353,9 @@ print(instance.metadata["author"])  # Output: John Doe
 # Question: You are optimizing a Django web application with a large database. The application
 # currently makes individual queries to fetch related data,
 # leading to the N+1 query problem. Given the following models:
+from django.db import models
+
+
 class Author(models.Model):
     name = models.CharField(max_length=100)
 
