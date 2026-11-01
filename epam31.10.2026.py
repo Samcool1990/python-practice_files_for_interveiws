@@ -646,7 +646,7 @@ print(f"get('foo', 0): {timeobj.get('foo', 0)}")  # Output: "" (nothing set yet)
 
 
 
-# What is Chain-of-thought
+# What is Chain-of-thought?
 # Answer:
 # Chain-of-thought (CoT) is a prompt engineering and AI reasoning technique that guides large language models (LLMs) to break down complex problems into intermediate, step-by-step logical thoughts before delivering a final answer.
 # Instead of jumping straight from a question to an immediate (and potentially flawed) output, the model is encouraged to "show its work"—simulating human-like problem-solving.
